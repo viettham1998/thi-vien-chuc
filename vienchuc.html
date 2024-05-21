@@ -23,7 +23,7 @@
 
 <body>
     <div style="padding: 2rem;">
-        <div style="padding: 0.5rem;"><input id="q1" type="radio" name="question-bank" value="question_0"
+        <div style="padding: 0.5rem;"><input id="q1" checked type="radio" name="question-bank" value="question_0"
                 label="test"><label for="q1">Hiến pháp
                 (20)</label></div>
         <div style="padding: 0.5rem;"><input id="q2" type="radio" name="question-bank" value="question_1"
@@ -37,6 +37,7 @@
                 (29)
             </label></div>
     </div>
+    <button style="margin: 2rem; padding: 2rem;" id="back-button">Back</button>
     <button style="margin: 2rem; padding: 2rem;" id="next-button">Next</button>
     <div id="q-content"></div>
     <p id="notify_message"></p>
@@ -1087,16 +1088,6 @@
                     "correct_index": 1
                 },
                 {
-                    "question_text": "",
-                    "answers_text": [
-                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực.",
-                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực trong hoạt động nghề nghiệp do tổ chức có thẩm quyền quy định.",
-                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực trong hoạt động nghề nghiệp do cơ quan, tổ chức có thẩm quyền quy định.",
-                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức trong hoạt động nghề nghiệp do cơ quan, tổ chức có thẩm quyền quy định."
-                    ],
-                    "correct_index": 2
-                },
-                {
                     "question_text": "Câu 34: Đạo đức nghề nghiệp là gì?",
                     "answers_text": [
                         "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực.",
@@ -1105,16 +1096,6 @@
                         "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức trong hoạt động nghề nghiệp do cơ quan, tổ chức có thẩm quyền quy định."
                     ],
                     "correct_index": 2
-                },
-                {
-                    "question_text": "",
-                    "answers_text": [
-                        "Nghiêm khắc phê bình",
-                        "Khiển trách",
-                        "Cảnh cáo",
-                        "Buộc thôi việc"
-                    ],
-                    "correct_index": 0
                 },
                 {
                     "question_text": "Câu 35. Lựa chọn nào dưới đây không phải là hình thức kỷ luật đối với viên chức:",
@@ -1958,8 +1939,20 @@
         // Function to handle next button click
         function nextQuestion() {
 
-            currentQuestionIndex = Math.floor(Math.random() * questions[currentQuestionBank].length);
+            // currentQuestionIndex = Math.floor(Math.random() * questions[currentQuestionBank].length);
+            currentQuestionIndex = (currentQuestionIndex + 1) % questions[currentQuestionBank].length;
 
+            showQuestion();
+        }
+
+        // Function to handle back button click
+        function backQuestion() {
+
+            // currentQuestionIndex = Math.floor(Math.random() * questions[currentQuestionBank].length);
+            currentQuestionIndex = (currentQuestionIndex - 1) % questions[currentQuestionBank].length;
+            if (currentQuestionIndex < 0) {
+                currentQuestionIndex = questions[currentQuestionBank].length + currentQuestionIndex;
+            }
             showQuestion();
         }
 
