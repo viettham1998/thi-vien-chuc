@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="padding: 2rem;">
+        <input id="q1" type="radio" name="question-bank" value="question_0" label="test"><label for="q1">Hiến pháp
+            (20)</label>
+        <input id="q2" type="radio" name="question-bank" value="question_1" label="test"><label for="q2">Luật giáo dục
+            (50)</label>
+        <input id="q3" type="radio" name="question-bank" value="question_2" label="test"><label for="q3">Luật viên chức
+            (81)</label>
+        <input id="q3" type="radio" name="question-bank" value="question_3" label="test"><label for="q3">Luật khác
+            (29)
+        </label>
+    </div>
+    <button style="margin: 2rem; padding: 2rem;" id="check-button">Check</button>
+    <button style="margin: 2rem; padding: 2rem;" id="next-button">Next</button>
+    <div id="q-content"></div>
+    <p id="notify_message"></p>
+    <script>
+        let questions = {
+            question_0: [
+                {
+                    "question_text": "Câu 1. Trong hệ thống pháp luật của nước ta hiện nay, Hiến pháp năm 2013 giữ vị trí, vai trò gì?",
+                    "answers_text": [
+                        "Luật cơ bản của Nhà nước",
+                        "Pháp luật cơ bản của Nhà nước",
+                        "Như những bộ luật khác",
+                        "Cả ba phương án trên"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 2. Trong hệ thống chính trị của nước ta hiện nay, Đảng cộng sản Việt Nam giữ vị tri, vai trò là gì?",
+                    "answers_text": [
+                        "Trung tâm của hệ thống chính trị",
+                        "Lãnh đạo hệ thống chính trị",
+                        "Lãnh đạo các đảng viên trong Đảng cộng sản Việt Nam",
+                        "Cả ba phương án trên"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 3. Lựa chọn nào bên dưới không đúng: Công dân đủ 18 tuổi trở lên, có quyền:",
+                    "answers_text": [
+                        "quyền bầu cử",
+                        "quyền ứng cử vào Quốc hội, Hội đồng nhân dân",
+                        "quyền biểu quyết khi Nhà nước tổ chức trưng cầu ý dân",
+                        "quyền hội họp, lập hội, biểu tình"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 4. Theo Hiến pháp, tội nào dưới đây là nặng nhất:",
+                    "answers_text": [
+                        "Phản bội Tổ quốc",
+                        "Buôn bán, tàng trữ trái phép chất ma túy nhiều lần, khối lượng lớn",
+                        "Giết người có tổ chức",
+                        "Tội gián điệp"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 5. Theo Hiến pháp, đất đai trên lãnh thổ Việt nam có thể thuộc quyền sở hữu của: a) Tư nhân",
+                    "answers_text": [
+                        "Doanh nghiệp nhà nước",
+                        "Toàn dân",
+                        "Các tập đoàn nước ngoài"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 6. Theo Hiến pháp, lựa chọn nào dưới đây là quốc sách hàng đầu:",
+                    "answers_text": [
+                        "Phát triển hệ thống an sinh xã hội",
+                        "Phát triển khoa học – công nghệ",
+                        "Phát triển kinh tế - xã hội",
+                        "Phát triển nền văn hóa Việt Nam tiên tiến, đậm đà bản sắc dân tộc"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 7. Hiến pháp năm 2013 quy định công dân bao nhiêu tuổi có quyền bầu cử Quốc hội, Hội đồng nhân dân?",
+                    "answers_text": [
+                        "Đủ 16 tuổi trở lên.",
+                        "Đủ 17 tuổi trở lên.",
+                        "Đủ 18 tuổi trở lên.",
+                        "Đủ 21 tuổi trở lên."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 8. Hiến pháp năm 2013 quy định công dân bao nhiêu tuổi có quyền ứng cử vào Quốc hội, Hội đồng nhân dân?",
+                    "answers_text": [
+                        "Đủ 16 tuổi trở lên.",
+                        "Đủ 18 tuổi trở lên.",
+                        "Đủ 20 tuổi trở lên.",
+                        "Đủ 21 tuổi trở lên."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 9. Hiến pháp năm 2013 quy định công dân bao nhiêu tuổi có quyền biểu quyết khi Nhà nước tổ chức trưng cầu ý dân?",
+                    "answers_text": [
+                        "Đủ 16 tuổi trở lên.",
+                        "Đủ 18 tuổi trở lên.",
+                        "Đủ 20 tuổi trở lên.",
+                        "Đủ 21 tuổi trở lên."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 10. Công dân có nghĩa vụ nào sau đây theo quy định của Hiến pháp năm 2013?",
+                    "answers_text": [
+                        "Tuân theo Hiến pháp và pháp luật.",
+                        "Tham gia bảo vệ an ninh quốc gia, trật tự, an toàn xã hội.",
+                        "Chấp hành những quy tắc sinh hoạt công cộng.",
+                        "Các nghĩa vụ trên."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 11. Hiến pháp năm 2013 quy định cơ quan đại biểu cao nhất của Nhân dân, cơ quan quyền lực nhà nước cao nhất của nước Cộng hòa xã hội chủ nghĩa Việt Nam là:",
+                    "answers_text": [
+                        "Quốc hội.",
+                        "Chính phủ.",
+                        "Tòa án nhân dân tối cao.",
+                        "Viện kiểm sát nhân dân tối cao."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 12. Theo quy định của Hiến pháp năm 2013, ai là người đứng đầu Nhà nước, thay mặt nước Cộng hòa xã hội chủ nghĩa Việt Nam về đối nội và đối ngoại?",
+                    "answers_text": [
+                        "Chủ tịch Quốc hội.",
+                        "Thủ tướng Chính phủ.",
+                        "Chủ tịch nước.",
+                        "Chánh án Tòa án nhân dân tối cao."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 13. Theo quy định của Hiến pháp năm 2013, cơ quan hành chính nhà nước cao nhất của nước Cộng hòa xã hội chủ nghĩa Việt Nam, thực hiện quyền hành pháp, là cơ quan chấp hành của Quốc hội là:",
+                    "answers_text": [
+                        "Quốc hội.",
+                        "Chính phủ.",
+                        "Tòa án nhân dân tối cao.",
+                        "Viện kiểm sát nhân dân tối cao."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 14. Theo quy định của Hiến pháp năm 2013, cơ quan xét xử của nước Cộng hòa xã hội chủ nghĩa Việt Nam, thực hiện quyền tư pháp là:",
+                    "answers_text": [
+                        "Quốc hội.",
+                        "Chính phủ.",
+                        "Tòa án nhân dân.",
+                        "Viện kiểm sát nhân dân."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 15. Cơ quan thực hành quyền công tố, kiểm sát hoạt động tư pháp theo quy định của Hiến pháp năm 2013 là:",
+                    "answers_text": [
+                        "Quốc hội.",
+                        "Chính phủ.",
+                        "Tòa án nhân dân.",
+                        "Viện Kiểm sát nhân dân."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 16. Hiến pháp năm 2013 quy định cơ quan quyền lực nhà nước ở địa phương, đại diện cho ý chí, nguyện vọng và quyền làm chủ của Nhân dân, do Nhân dân địa phương bầu ra, chịu trách nhiệm trước Nhân dân địa phương và cơ quan nhà nước cấp trên là:",
+                    "answers_text": [
+                        "Hội đồng nhân dân.",
+                        "Ủy ban nhân dân.",
+                        "Tòa án nhân dân.",
+                        "Viện kiểm sát nhân dân."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 17. Hiến pháp năm 2013 quy định văn bản nào sau đây là luật cơ bản của nước Cộng hòa xã hội chủ nghĩa Việt Nam, có hiệu lực pháp lý cao nhất?",
+                    "answers_text": [
+                        "Hiến pháp.",
+                        "Nghị quyết.",
+                        "Bộ luật.",
+                        "Luật."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 18. Hiến pháp năm 2013 quy định các chủ thể nào sau đây có trách nhiệm bảo vệ Hiến pháp?",
+                    "answers_text": [
+                        "Quốc hội, các cơ quan của Quốc hội, Chủ tịch nước, Chính phủ, Tòa án nhân dân, Viện kiểm sát nhân dân, các cơ quan khác của Nhà nước.",
+                        "Toàn thể Nhân dân.",
+                        "Tất cả chủ thể trên.",
+                        "Không có chủ thể nào nêu trên."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 19. Hiến pháp năm 2013 quy định cấp chính quyền địa phương gồm có:",
+                    "answers_text": [
+                        "Hội đồng nhân dân và Ủy ban nhân dân.",
+                        "Tòa án nhân dân và Viện kiểm sát nhân dân.",
+                        "Tất cả chủ thể nào nêu trên",
+                        "Toàn thể nhân dân địa phương."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 20. Theo quy định của Hiến pháp năm 2013, cơ quan nào do Hội đồng nhân dân cùng cấp bầu là cơ quan chấp hành của Hội đồng nhân dân, cơ quan hành chính nhà nước ở địa phương,chịu trách nhiệm trước Hội đồng nhân dân và cơ quan hành chính nhà nước cấp trên?",
+                    "answers_text": [
+                        "Tòa án nhân dân tỉnh, huyện.",
+                        "Viện kiểm sát nhân dân tỉnh, huyện.",
+                        "Ủy ban nhân dân ở cấp chính quyền địa phương.",
+                        "Các cơ quan trên."
+                    ],
+                    "correct_index": 2
+                }
+            ], // Array to store questions from bank 0
+            question_1: [
+                {
+                    "question_text": "Câu 1. Nghị định 186/2013/NĐ-CP ngày 17/11/2013 của Chính phủ về Đại học quốc gia quy định vị trí, chức năng của Đại học quốc gia như thế nào?",
+                    "answers_text": [
+                        "Là cơ sở giáo dục đại học công lập; là trung tâm đào tạo, nghiên cứu khoa học, công nghệ đa ngành, đa lĩnh vực chất lượng cao, được Nhà nước ưu tiên đầu tư phát triển.",
+                        "Là tổ hợp các trường đại học, viện nghiên cứu khoa học thành viên thuộc các lĩnh vực chuyên môn khác nhau, tổ chức theo hai cấp để đào tạo các trình độ của giáo dục đại học; là trung tâm đào tạo, nghiên cứu khoa học, công nghệ đa ngành, đa lĩnh vực chất lượng cao.",
+                        "Là cơ sở giáo dục đại học công lập bao gồm tổ hợp các trường đại học, viện nghiên cứu khoa học thành viên thuộc các lĩnh vực chuyên môn khác nhau, tổ chức theo hai cấp để đào tạo các trình độ của giáo dục đại học.",
+                        "Là cơ sở giáo dục đại học công lập bao gồm tổ hợp các trường đại học, viện nghiên cứu khoa học thành viên thuộc các lĩnh vực chuyên môn khác nhau, tổ chức theo hai cấp để đào tạo các trình độ của giáo dục đại học; là trung tâm đào tạo, nghiên cứu khoa học, công nghệ đa ngành, đa lĩnh vực chất lượng cao, được Nhà nước ưu tiên đầu tư phát triển."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 2. Đại học quốc gia chịu sự quản lý của ai?",
+                    "answers_text": [
+                        "Bộ Giáo dục và Đào tạo về giáo dục và đào tạo, của Bộ Khoa học và Công nghệ về khoa học và công nghệ và Ủy ban nhân dân cấp tỉnh nơi Đại học quốc gia đặt trụ sở trong lĩnh vực được phân công theo quy định của Chính phủ và phù hợp với pháp luật.",
+                        "Bộ Giáo dục và Đào tạo về giáo dục và đào tạo, của Bộ Khoa học và Công nghệ về khoa học và công nghệ, của các bộ, ngành khác theo quy định của Chính phủ và phù hợp với pháp luật.",
+                        "Bộ Giáo dục và Đào tạo về giáo dục và đào tạo, của Bộ Khoa học và Công nghệ về khoa học và công nghệ, của các bộ, ngành khác và Ủy ban nhân dân cấp tỉnh nơi Đại học quốc gia đặt trụ sở trong lĩnh vực được phân công theo quy định của Chính phủ và phù hợp với pháp luật.",
+                        "Bộ Giáo dục và Đào tạo, của Bộ Khoa học và Công nghệ, của các bộ, ngành khác và Ủy ban nhân dân cấp tỉnh nơi Đại học quốc gia đặt trụ sở theo quy định của Chính phủ và phù hợp với pháp luật."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 3. Cơ cấu tổ chức của Đại học quốc gia được quy định tại Quy chế về tổ chức và hoạt động của Đại học quốc gia và các cơ sở giáo dục đại học thành viên do Thủ tướng Chính phủ ban hành tại Quyết định 26/2014/QĐ-TTg ngày 26/3/2014 gồm những gì?",
+                    "answers_text": [
+                        "Hội đồng Đại học quốc gia; Giám đốc, phó giám đốc; Văn phòng và các ban chức năng; Các trường đại học thành viên, các viện nghiên cứu khoa học thành viên; Các khoa trực thuộc, các trung tâm nghiên cứu khoa học và công nghệ, phân hiệu (nếu có), các tổ chức phục vụ đào tạo, nghiên cứu khoa học và triển khai ứng dụng, cơ sở sản xuất, kinh doanh, dịch vụ, bệnh viện, nhà xuất bản, tạp chí khoa học; Hội đồng khoa học và đào tạo, một số hội đồng tư vấn khác.",
+                        "Hội đồng Đại học quốc gia; Đảng ủy; Ban Giám đốc; Văn phòng và các ban chức năng; Các trường đại học và viện nghiên cứu khoa học thành viên; Các khoa trực thuộc, các trung tâm nghiên cứu khoa học và công nghệ, phân hiệu (nếu có), các tổ chức phục vụ đào tạo, nghiên cứu khoa học và triển khai ứng dụng, cơ sở sản xuất, kinh doanh, dịch vụ, bệnh viện, nhà xuất bản, tạp chí khoa học; Các hội đồng tư vấn.",
+                        "Đảng ủy; Ban Giám đốc; Công đoàn; Đoàn thanh niên cộng sản Hồ Chí Minh; Văn phòng và các ban chức năng; Các trường đại học thành viên, các viện nghiên cứu khoa học thành viên; Các khoa trực thuộc, các trung tâm nghiên cứu khoa học và công nghệ, phân hiệu (nếu có), các tổ chức phục vụ đào tạo, nghiên cứu khoa học và triển khai ứng dụng, cơ sở sản xuất, kinh doanh; dịch vụ, bệnh viện, nhà xuất bản, tạp chí khoa học; Các hội đồng tư vấn.",
+                        "Đảng ủy, Ban Giám đốc; Văn phòng và các ban chức năng; Các đơn vị thành viên gồm: trường đại học và viện nghiên cứu khoa học; Các đơn vị trực thuộc gồm: khoa trực thuộc, trung tâm nghiên cứu khoa học và công nghệ, phân hiệu (nếu có), các tổ chức phục vụ đào tạo, nghiên cứu khoa học và triển khai ứng dụng, cơ sở sản xuất, kinh doanh, dịch vụ, bệnh viện, nhà xuất bản, tạp chí khoa học; Các hội đồng tư vấn."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 4. Số lượng và cơ cấu thành viên Hội đồng Đại học quốc gia như thế nào?",
+                    "answers_text": [
+                        "Từ 17 đến 35 thành viên, trong đó số lượng thành viên mời chiếm không quá 1/3 so với tổng số thành viên.",
+                        "Từ 17 đến 35 thành viên, trong đó số lượng thành viên mời chiếm không quá 1/2 so với tổng số thành viên.",
+                        "Từ 17 đến 25 thành viên, trong đó số lượng thành viên mời chiếm không quá 1/3 so với tổng số thành viên.",
+                        "Từ 17 đến 25 thành viên, trong đó số lượng thành viên mời chiếm không quá 1/2 so với tổng số thành viên."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 5. Thành viên đương nhiên của Hội đồng Đại học quốc gia gồm những ai?",
+                    "answers_text": [
+                        "Giám đốc, các phó giám đốc; bí thư đảng ủy, chủ tịch Công đoàn, bí thư Đoàn thanh niên Cộng sản Hồ Chí Minh, chánh Văn phòng, trưởng ban chức năng của Đại học quốc gia; hiệu trưởng trường đại học thành viên, viện trưởng viện nghiên cứu khoa học thành viên.",
+                        "Giám đốc, các phó giám đốc; bí thư đảng ủy, chủ tịch Công đoàn, bí thư Đoàn thanh niên Cộng sản Hồ Chí Minh của Đại học quốc gia; hiệu trưởng trường đại học thành viên, viện trưởng viện nghiên cứu khoa học thành viên; trưởng khoa trực thuộc.",
+                        "Giám đốc, các phó giám đốc; bí thư đảng ủy, chủ tịch Công đoàn, bí thư Đoàn thanh niên Cộng sản Hồ Chí Minh của Đại học quốc gia; hiệu trưởng trường đại học thành viên, viện trưởng viện nghiên cứu khoa học thành viên.",
+                        "Giám đốc, các phó giám đốc; bí thư đảng ủy, chủ tịch Công đoàn, bí thư Đoàn thanh niên Cộng sản Hồ Chí Minh của Đại học quốc gia; hiệu trưởng trường đại học thành viên, viện trưởng viện nghiên cứu khoa học thành viên; đại diện của các bộ, ban, ngành trung ương, địa phương."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 6. Việc thành lập trường đại học thành viên của Đại học quốc gia thuộc thẩm quyền quyết định của ai?",
+                    "answers_text": [
+                        "Giám đốc Đại học quốc gia.",
+                        "Thủ tướng Chính phủ.",
+                        "Bộ trưởng Bộ Giáo dục và Đào tạo.",
+                        "Chủ tịch Ủy ban nhân dân tỉnh nơi Đại học quốc gia đặt trụ sở."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 7. Quy chế tổ chức và hoạt động của trường đại học thành viên và khoa trực thuộc ĐHQG-HCM quy định vị trí pháp lý của trường đại học thành viên như thế nào?",
+                    "answers_text": [
+                        "Trường đại học thành viên là cơ sở giáo dục đại học thuộc ĐHQG-HCM, do Thủ tướng Chính phủ quyết định thành lập, chia tách, sáp nhập, giải thể trên cơ sở đề nghị của ĐHQG-HCM và cơ quan quản lý nhà nước có thẩm quyền; có tư cách pháp nhân, có con dấu và tài khoản riêng.",
+                        "Trường đại học thành viên là cơ sở giáo dục đại học thuộc ĐHQG-HCM, do Thủ tướng Chính phủ quyết định thành lập, chia tách, sáp nhập, giải thể trên cơ sở đề nghị của ĐHQG-HCM; có tư cách pháp nhân, có con dấu và tài khoản riêng.",
+                        "Trường đại học thành viên là cơ sở giáo dục đại học thuộc ĐHQG-HCM, do Thủ tướng Chính phủ quyết định thành lập, chia tách, sáp nhập, giải thể trên cơ sở đề nghị của ĐHQG-HCM và cơ quan quản lý nhà nước có thẩm quyền.",
+                        "Trường đại học thành viên là cơ sở giáo dục đại học thuộc ĐHQG-HCM, do Thủ tướng Chính phủ quyết định thành lập, chia tách, sáp nhập, giải thể; có tư cách pháp nhân, có con dấu và tài khoản riêng."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 8. Nguyên tắc quản lý của ĐHQG-HCM đối với trường đại học thành viên ĐHQG-HCM được thực hiện như thế nào?",
+                    "answers_text": [
+                        "Được thực hiện thông qua kế hoạch chiến lược phát triển của ĐHQG-HCM và kế hoạch chiến lược phát triển của đơn vị.",
+                        "Được thực hiện thông qua kế hoạch chiến lược phát triển đơn vị.",
+                        "Được thực hiện thông qua kế hoạch chiến lược phát triển và kế hoạch hoạt động hàng năm của đơn vị.",
+                        "Được thực hiện thông qua kế hoạch hoạt động hàng năm của đơn vị"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 9. Những đối tượng nào sau đây thuộc thẩm quyền quản lý của Hiệu trưởng trường đại học thành viên ĐHQG-HCM?",
+                    "answers_text": [
+                        "Trưởng, phó các khoa, phòng trực thuộc trường.",
+                        "Viên chức cấp trưởng, phó các đơn vị trực thuộc trường.",
+                        "Là các viên chức thuộc trường từ cấp trưởng đơn vị trực thuộc trường trở xuống.",
+                        "Cả a, b và c."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 10. Việc xét công nhận đạt tiêu chuẩn chức danh giáo sư, phó giáo sư và bổ nhiệm chức danh giáo sư, phó giáo sư cho công chức, viên chức của trường đại học thành viên là nhiệm vụ của đơn vị nào?",
+                    "answers_text": [
+                        "Trường đại học thành viên.",
+                        "Đại học quốc gia.",
+                        "Bộ Nội vụ.",
+                        "Bộ Giáo dục và Đào tạo."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 11. Nhiệm vụ và quyền hạn của cơ sở giáo dục đại học trong hoạt động hợp tác quốc tế:",
+                    "answers_text": [
+                        "Thực hiện các hình thức hợp tác quốc tế quy định.",
+                        "Tuân thủ các quy định của pháp luật Việt Nam và điều ước quốc tế mà Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên.",
+                        "Được bảo hộ quyền, lợi ích hợp pháp theo quy định của pháp luật Việt Nam và điều ước quốc tế mà Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 12. Giáo dục đại học gồm các trình độ:",
+                    "answers_text": [
+                        "Trình độ đại học",
+                        "Trình độ thạc sĩ",
+                        "Trình độ tiến sĩ",
+                        "Tất cả các lựa chọn trên."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 13. Lựa chọn nào không đúng: Cơ sở giáo dục đại học bao gồm:",
+                    "answers_text": [
+                        "Đại học",
+                        "Trường đại học",
+                        "Trường",
+                        "Trung tâm đào tạo đại học"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 14. Hội đồng nào trong cơ cấu tổ chức của Đại học là hội đồng mà nghị quyết của nó bắt buộc Giám đốc đại học phải thực hiện theo:",
+                    "answers_text": [
+                        "Hội đồng Khoa học và đào tạo đại học",
+                        "Hội đồng đại học",
+                        "Hội đồng Bảo đảm chất lượng đại học",
+                        "Không có hội đồng nào ở trên."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 15. Trách nhiệm và quyền hạn “ Quyết định phương hướng tuyển sinh, mở ngành, đào tạo, liên kết đào tạo, hoạt động khoa học và công nghệ, hợp tác quốc tế” là thuộc về:",
+                    "answers_text": [
+                        "Hội đồng trường đại học",
+                        "Hội đồng khoa học và đào tạo",
+                        "Hội đồng tuyển sinh trường đại học",
+                        "Không có lựa chọn nào phù hợp"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 16. Quyền bổ nhiệm cấp Trưởng phòng chức năng thuộc trường đại học là quyền của:",
+                    "answers_text": [
+                        "Hội đồng trường",
+                        "Hiệu trưởng",
+                        "Ban giám hiệu",
+                        "Đảng ủy trường đại học"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 17. Trường hợp nào dưới đây không phải là thành viên đương nhiên của Hội đồng trường:",
+                    "answers_text": [
+                        "Bí thư Đảng ủy",
+                        "Hiệu trưởng",
+                        "Các Phó hiệu trưởng",
+                        "Đại diện Đoàn thanh niên là người học của trường đại học"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 18. Thành phần bầu là giảng viên chiếm tỷ lệ tối thiểu bao nhiêu phần trăm trong tổng số thành viên hội đồng trường:",
+                    "answers_text": [
+                        "25",
+                        "30",
+                        "35",
+                        "40"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 19. Thành viên ngoài trường đại học chiếm tỷ lệ tối thiểu là bao nhiêu phần trăm tổng số thành viên của hội đồng trường:",
+                    "answers_text": [
+                        "25",
+                        "30",
+                        "35",
+                        "40"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 20. Chọn khẳng định không phù hợp: Chủ tịch hội đồng trường có thể là",
+                    "answers_text": [
+                        "Viên chức là Giảng viên",
+                        "Bí thư Đảng ủy trường Đại học",
+                        "Phó hiệu trưởng",
+                        "Viên chức là Chuyên viên"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 21. Lựa chọn nào dưới đây không phải là trách nhiệm hoặc quyền hạn của chủ tịch hội đồng trường đại học:",
+                    "answers_text": [
+                        "Chỉ đạo xây dựng chương trình, kế hoạch hoạt động hằng năm của hội đồng trường.",
+                        "Chỉ đạo tổ chức và chủ trì các cuộc họp của hội đồng trường.",
+                        "Chỉ đạo các cấp trưởng phòng chức năng, trưởng khoa thực hiện nhiệm vụ chuyên môn.",
+                        "Ký văn bản thuộc thẩm quyền ban hành của hội đồng trường."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 22. Hội đồng trường họp ít nhất:",
+                    "answers_text": [
+                        "6 tháng 1 lần",
+                        "4 tháng 1 lần",
+                        "3 tháng 1 lần",
+                        "2 tháng 1 lần"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 23. Cần ít nhất bao nhiêu phần trăm tổng số thành viên dự họp, để cuộc họp hội đồng trường là hợp lệ:",
+                    "answers_text": [
+                        "50",
+                        "60",
+                        "70",
+                        "75"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 24. Hội đồng trường làm việc theo nguyên tắc:",
+                    "answers_text": [
+                        "Nguyên tắc tập thể, quyết định theo đa số, trừ trường hợp quy chế tổ chức và hoạt động của trường đại học quy định tỷ lệ biểu quyết cao hơn",
+                        "Nguyên tắc thủ trưởng, hội đồng thảo luận và chủ tịch hội đồng trường là người đưa ra quyết định.",
+                        "Nguyên tắc Đảng lãnh đạo: Đảng ủy lãnh đạo hội đồng trường đưa ra các thảo luận và quyết định.",
+                        "Các nguyên tắc trên đều không phù hợp."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 25. Hội đồng khoa học và đào tạo có nhiệm vụ tư vấn về việc xây dựng:",
+                    "answers_text": [
+                        "Quy chế, quy định về đào tạo, hoạt động khoa học và công nghệ, tiêu chuẩn tuyển dụng giảng viên, nghiên cứu viên, nhân viên thư viện, phòng thí nghiệm;",
+                        "Kế hoạch phát triển đội ngũ giảng viên, nghiên cứu viên của nhà trường;",
+                        "Đề án mở ngành, chuyên ngành đào tạo, triển khai và hủy bỏ các chương trình đào tạo; định hướng phát triển khoa học và công nghệ, kế hoạch hoạt động khoa học và công nghệ, phân công thực hiện các nhiệm vụ đào tạo, khoa học và công nghệ. d) Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 26. Lựa chọn nào bên dưới không phải là điều kiện cần để cơ sở giáo dục đại học thực hiện quyền tự chủ:",
+                    "answers_text": [
+                        "Đã thành lập hội đồng trường.",
+                        "Đã được xếp hạng về chất lượng đào tạo.",
+                        "Đã ban hành và tổ chức thực hiện quy chế tổ chức và hoạt động.",
+                        "Đã thực hiện phân quyền tự chủ và trách nhiệm giải trình đến từng đơn vị, cá nhân trong cơ sở giáo dục đại học."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 27. Quyền tự chủ của cơ sở giáo dục đại học bao gồm:",
+                    "answers_text": [
+                        "Quyền tự chủ trong học thuật, trong hoạt động chuyên môn",
+                        "Quyền tự chủ trong tổ chức và nhân sự",
+                        "Quyền tự chủ trong tài chính và tài sản",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 28. Mục tiêu hoạt động khoa học và công nghệ",
+                    "answers_text": [
+                        "Nâng cao chất lượng giáo dục đại học, năng lực nghiên cứu và khả năng ứng dụng khoa học và công nghệ của giảng viên, nghiên cứu viên, cán bộ quản lý, viên chức.",
+                        "Hình thành và phát triển năng lực nghiên cứu khoa học cho người học; phát hiện và bồi dưỡng nhân tài, đáp ứng yêu cầu đào tạo nhân lực trình độ cao.",
+                        "Tạo ra tri thức, công nghệ, giải pháp mới để phát triển khoa học và giáo dục, góp phần phát triển kinh tế - xã hội, bảo đảm quốc phòng, an ninh của đất nước.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 29. Lựa chọn nào bên dưới không phải là nhiệm vụ hoặc quyền hạn của cơ sở giáo dục đại học trong hoạt động khoa học và công nghệ:",
+                    "answers_text": [
+                        "Được bảo hộ quyền sở hữu trí tuệ; chuyển giao, chuyển nhượng kết quả hoạt động khoa học và công nghệ; công bố kết quả hoạt động khoa học và công nghệ.",
+                        "Thành lập tổ chức nghiên cứu và phát triển, tổ chức dịch vụ khoa học và công nghệ, doanh nghiệp khoa học và công nghệ",
+                        "Sử dụng tiền, tài sản, giá trị tài sản trí tuệ, các nguồn thu hợp pháp để trang bị các phòng thí nghiệm, phòng nghiên cứu khoa học.",
+                        "Nghiên cứu khoa học và chuyển giao công nghệ nhằm tạo ra tri thức, công nghệ, giải pháp mới, góp phần phát triển kinh tế - xã hội phù hợp với năng lực khoa học, công nghệ của nhà trường."
+                    ],
+                    "correct_index": null
+                },
+                {
+                    "question_text": "Câu 30. Các hình thức hợp tác quốc tế của cơ sở giáo dục đại học:",
+                    "answers_text": [
+                        "Hợp tác nghiên cứu khoa học và chuyển giao công nghệ, tổ chức hội nghị, hội thảo khoa học",
+                        "Tư vấn, tài trợ, đầu tư phát triển cơ sở vật chất, trang thiết bị.",
+                        "Bồi dưỡng, trao đổi giảng viên, nghiên cứu viên, cán bộ quản lý và người học",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 31. Đâu không phải là mục tiêu của kiểm định chất lượng giáo dục đại học:",
+                    "answers_text": [
+                        "Bảo đảm và nâng cao chất lượng giáo dục đại học",
+                        "Xác nhận mức độ đáp ứng mục tiêu của cơ sở giáo dục đại học hoặc chương trình đào tạo trong từng giai đoạn",
+                        "Gia tăng thứ hạng trong các bảng xếp hạng quốc tế.",
+                        "Làm cơ sở cho người học lựa chọn cơ sở giáo dục đại học, chương trình đào tạo; cho nhà tuyển dụng lao động tuyển chọn nhân lực"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 32. Nguyên tắc kiểm định chất lượng giáo dục đại học:",
+                    "answers_text": [
+                        "Độc lập, khách quan, đúng pháp luật;",
+                        "Trung thực, công khai, minh bạch;",
+                        "Bình đẳng, bắt buộc, định kỳ.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 32. Lựa chọn nào sau đây không phải là chức danh nghề nghiệp trong cơ sở giáo dục đại học công lập:",
+                    "answers_text": [
+                        "Giảng viên",
+                        "Trợ giảng",
+                        "Giáo sư, Phó Giáo sư",
+                        "Giảng viên chính"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 33. Tầm nhìn trong chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh là gì?",
+                    "answers_text": [
+                        "Trở thành hệ thống đại học nghiên cứu trong tốp đầu Đông Nam Á, nơi hội tụ nhân tài và lan tỏa tri thức, văn hóa Việt Nam",
+                        "Trở thành hệ thống đại học trong tốp đầu Đông Nam Á, nơi hội tụ nhân tài và lan tỏa tri thức, văn hóa Việt Nam",
+                        "Trở thành hệ thống đại học nghiên cứu trong tốp đầu châu Á, nơi hội tụ nhân tài và lan tỏa tri thức, văn hóa Việt Nam",
+                        "Trở thành hệ thống đại học trong tốp đầu châu Á, nơi hội tụ nhân tài và lan tỏa tri thức, văn hóa Việt Nam"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 34. Giá trị cốt lõi trong chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh là gì?",
+                    "answers_text": [
+                        "Gắn kết, phục vụ cộng đồng",
+                        "Trách nhiệm, hiệu quả trong hoạt động",
+                        "Xuất sắc, tiên phong, chính trực trong đào tạo, nghiên cứu",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 35. Tỷ lệ giảng viên có trình độ tiến sĩ trong hệ thống chỉ tiêu đến năm 2023 của chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh là",
+                    "answers_text": [
+                        "Trên 25%",
+                        "Trên 30%",
+                        "Trên 50%",
+                        "Trên 75%"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 36. Số công bố bài báo trong danh mục Scopus trong hệ thống chỉ tiêu đến năm 2023 của chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh là",
+                    "answers_text": [
+                        "Hơn 15000 bài báo",
+                        "Hơn 25000 bài báo",
+                        "Hơn 35000 bài báo",
+                        "Hơn 50000 bài báo"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 37. Tỷ lệ sinh viên có việc làm sau một năm tốt nghiệp trong hệ thống chỉ tiêu đến năm 2023 của chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh là",
+                    "answers_text": [
+                        "trên 75%",
+                        "trên 80%",
+                        "trên 90%",
+                        "trên 95%"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 38. Nhiệm vụ trọng tâm của chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh là",
+                    "answers_text": [
+                        "Thu hút, đào tạo, bồi dưỡng nhân tài.",
+                        "Mở rộng đào tạo, nghiên cứu liên ngành.",
+                        "Phát triển Trung tâm Đổi mới sáng tạo quốc gia; Phát triển nguồn lực tài chính bền vững.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 39. Chương trình thu hút, giữ chân và phát triển các nhà khoa học trẻ xuất sắc, các nhà khoa học đầu ngành của chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh gọi tắt là gì và số lượng nhà khoa học được thu hút là bao nhiêu?",
+                    "answers_text": [
+                        "ĐHQG350; 700",
+                        "ĐHQG-HCM350; 350",
+                        "VNUHCM350, 700",
+                        "VNU350, 350"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 40. Trong chiến lược 4 của chiến lược phát triển Đại học Quốc gia Tp. Hồ Chí Minh về Tăng cường hợp tác và chủ động hội nhập có mục tiêu cụ thể và giải pháp để Tăng cường hợp tác, đóng góp hiệu quả cho sự phát triển của địa phương, doanh nghiệp và thực hiện trách nhiệm với cộng đồng dự kiến có các kết quả sau:",
+                    "answers_text": [
+                        "10% Tỷ lệ tăng số lượng và nguồn thu từ hoạt động hợp tác với địa phương và doanh nghiệp trung bình hằng năm",
+                        "02 Chương trình hợp tác 3 nhà được triển khai",
+                        "01 đến 03 Chương trình hỗ trợ địa phương, phục vụ cộng đồng của sinh viên",
+                        "Tất cả các kết quả trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 41. Có bao nhiêu chức danh nghề nghiệp viên chức giảng dạy trong các cơ sở giáo dục đại học công lập :",
+                    "answers_text": [
+                        "03",
+                        "02",
+                        "04",
+                        "01"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 42. Có bao nhiêu chức danh nghề nghiệp viên chức chuyên ngành khoa học:",
+                    "answers_text": [
+                        "03",
+                        "02",
+                        "04",
+                        "01"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 43. Có bao nhiêu chức danh nghề nghiệp viên chức chuyên ngành công nghệ:",
+                    "answers_text": [
+                        "03",
+                        "02",
+                        "04",
+                        "01"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 44. Nhiệm vụ của Trợ giảng (hạng III) là",
+                    "answers_text": [
+                        "Hỗ trợ giảng viên (hạng III), giảng viên chính (hạng II), giảng viên cao cấp (hạng I) trong các hoạt động giảng dạy, bao gồm: Chuẩn bị bài giảng, phụ đạo, hướng dẫn bài tập, thảo luận, thí nghiệm, thực hành, thực tập và chấm bài;",
+                        "Học tập, bồi dưỡng nâng cao trình độ lý luận chính trị, chuyên môn, nghiệp vụ và phương pháp giảng dạy; tham gia hoạt động thực tiễn để nâng cao chất lượng đào tạo và nghiên cứu khoa học;",
+                        "Tham gia công tác quản lý, công tác Đảng, đoàn thể và thực hiện các nhiệm vụ khác theo quy chế tổ chức, hoạt động của cơ sở giáo dục đại học công lập và quy định khác của pháp luật có liên quan.",
+                        "Tất cả các nhiệm vụ trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 45. Tiêu chuẩn về trình độ đào tạo của Giảng viên (hạng III) là",
+                    "answers_text": [
+                        "Có bằng thạc sĩ trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;",
+                        "Có bằng cử nhân đại học trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;",
+                        "Có bằng cử nhân cao đẳngtrở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;",
+                        "Có bằng tiến sĩ trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 46. Tiêu chuẩn về trình độ đào tạo của Trợ giảng (hạng III)",
+                    "answers_text": [
+                        "Có bằng thạc sĩ trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;",
+                        "Có bằng đại học trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy.",
+                        "Có bằng cử nhân cao đẳng trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;",
+                        "Có bằng tiến sĩ trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 47. Tiêu chuẩn về trình độ đào tạo của Giảng viên cao cấp (hạng 1)",
+                    "answers_text": [
+                        "Có bằng thạc sĩ trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;",
+                        "Có trình độ đại học trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy.",
+                        "Có bằng cử nhân cao đẳng trở lên phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;",
+                        "Có bằng tiến sỹ phù hợp với vị trí việc làm, ngành hoặc chuyên ngành giảng dạy;"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 48. Tiêu chuẩn về trình độ đào tạo của Nghiên cứu viên cao cấp (hạng I)",
+                    "answers_text": [
+                        "Có bằng thạc sĩ trở lên phù hợp với chuyên ngành nghiên cứu",
+                        "Có trình độ đại học trở lên phù hợp với chuyên ngành nghiên cứu.",
+                        "Có bằng cử nhân cao đẳng trở lên phù hợp với chuyên ngành nghiên cứu",
+                        "Có trình độ tiến sĩ trở lên phù hợp với chuyên ngành nghiên cứu"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 49. Tiêu chuẩn về trình độ đào tạo của Nghiên cứu viên (hạng III)",
+                    "answers_text": [
+                        "Có bằng thạc sĩ trở lên phù hợp với chuyên ngành nghiên cứu",
+                        "Có trình độ đại học trở lên phù hợp với chuyên ngành nghiên cứu;",
+                        "Có bằng cử nhân cao đẳng trở lên phù hợp với chuyên ngành nghiên cứu",
+                        "Có trình độ tiến sĩ trở lên phù hợp với chuyên ngành nghiên cứu"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 50. Tiêu chuẩn về trình độ đào tạo của Trợ lý nghiên cứu (hạng IV)",
+                    "answers_text": [
+                        "Có bằng thạc sĩ trở lên phù hợp với chuyên ngành nghiên cứu",
+                        "Có trình độ đại học trở lên phù hợp với chuyên ngành nghiên cứu;",
+                        "Có trình độ trung cấp trở lên phù hợp chuyên ngành nghiên cứu;",
+                        "Có trình độ cao đẳng trở lên phù hợp với chuyên ngành nghiên cứu"
+                    ],
+                    "correct_index": 2
+                }
+            ], // Array to store questions from bank 1
+            question_2: [
+                {
+                    "question_text": "Câu 1. Phạm vi điều chỉnh của Luật viên chức là gì?",
+                    "answers_text": [
+                        "Luật này quy định về viên chức; chức trách, nhiệm vụ của viên chức; tuyển dụng, sử dụng và quản lý viên chức trong cơ quan nhà nước.",
+                        "Luật này quy định về viên chức; quyền, nghĩa vụ của viên chức; tuyển dụng, sử dụng và quản lý viên chức trong đơn vị sự nghiệp công lập.",
+                        "Luật này quy định về viên chức; quyền, nghĩa vụ của viên chức; tuyển dụng, sử dụng và quản lý viên chức trong cơ quan nhà nước.",
+                        "Luật này quy định về việc tuyển dụng, sử dụng và quản lý viên chức trong đơn vị sự nghiệp công lập."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 2. Viên chức là ai?",
+                    "answers_text": [
+                        "Viên chức là công dân Việt Nam được tuyển dụng theo vị trí việc làm, làm việc tại đơn vị sự nghiệp công lập theo chế độ hợp đồng làm việc, hưởng lương từ quỹ lương của đơn vị sự nghiệp công lập theo quy định của pháp luật.",
+                        "Viên chức được tuyển dụng theo vị trí việc làm, làm việc tại đơn vị sự nghiệp công lập theo chế độ hợp đồng làm việc, hưởng lương từ quỹ lương của đơn vị sự nghiệp công lập theo quy định của pháp luật.",
+                        "Viên chức là công dân Việt Nam được tuyển dụng theo vị trí việc làm, làm việc tại đơn vị sự nghiệp công lập, được hưởng lương từ quỹ lương của đơn vị sự nghiệp công lâp.",
+                        "Viên chức là công dân Việt Nam, làm việc trong đơn vị sự nghiệp công lập, được hưởng lương từ quỹ lương của đơn vị sự nghiệp công lập theo quy định của pháp luật."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 3. Đối tượng nào là viên chức quản lý?",
+                    "answers_text": [
+                        "Viên chức quản lý là người được bổ nhiệm giữ chức vụ quản lý có thời hạn, tổ chức thực hiện một hoặc một số công việc trong đơn vị sự nghiệp công lập nhưng không phải là công chức và được hưởng phụ cấp quản lý.",
+                        "Viên chức quản lý là người được bổ nhiệm giữ chức vụ quản lý có thời hạn, chịu trách nhiệm về điều hành, tổ chức thực hiện một hoặc một số công việc trong đơn vị sự nghiệp công lập nhưng không phải là công chức.",
+                        "Viên chức quản lý là người được bổ nhiệm giữ chức vụ quản lý có thời hạn, chịu trách nhiệm về điều hành, tổ chức thực hiện một hoặc một số công việc nhưng không phải là công chức và được hưởng phụ cấp quản lý.",
+                        "Viên chức quản lý là người được bổ nhiệm giữ chức vụ quản lý có thời hạn, chịu trách nhiệm điều hành, tổ chức thực hiện một hoặc một số công việc trong đơn vị sự nghiệp công lập nhưng không phải là công chức và được hưởng phụ cấp chức vụ quản lý."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 4. Hoạt động nghề nghiệp của viên chức là gì?",
+                    "answers_text": [
+                        "Là việc thực hiện công việc hoặc nhiệm vụ có yêu cầu về trình độ, năng lực, kỹ năng chuyên môn, nghiệp vụ trong đơn vị sự nghiệp công lập theo quy định của Luật Viên chức.",
+                        "Là việc thực hiện công việc hoặc nhiệm vụ có yêu cầu về trình độ, năng lực, kỹ năng chuyên môn, nghiệp vụ trong đơn vị sự nghiệp công lập theo quy định của Luật Viên chức và các quy định khác của pháp luật có liên quan.",
+                        "Là việc thực hiện nhiệm vụ, quyền hạn của viên chức theo quy định của Luật Viên chức.",
+                        "Là việc thực hiện công việc hoặc nhiệm vụ có yêu cầu trình độ, năng lực, kỹ năng chuyên môn, nghiệp vụ trong đơn vị sự nghiệp công lập."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 5. Nội dung nào dưới đây thuộc nguyên tắc quản lý viên chức",
+                    "answers_text": [
+                        "Kết hợp giữa tiêu chuẩn chức danh nghề nghiệp, vị trí việc làm và chỉ tiêu biên chế.",
+                        "Thực hiện nguyên tắc tập trung dân chủ, chế độ trách nhiệm cá nhân và phân công, phân cấp rõ ràng.",
+                        "Việc tuyển dụng, sử dụng, quản lý, đánh giá viên chức được thực hiện trên cơ sở tiêu chuẩn chức danh nghề nghiệp, vị trí việc làm và căn cứ vào hợp đồng làm việc.",
+                        "Việc sử dụng, đánh giá, phân loại viên chức phải dựa trên phẩm chất chính trị, đạo đức và năng lực thi hành công vụ."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 6. Vị trí việc làm là gì?",
+                    "answers_text": [
+                        "Là công việc hoặc nhiệm vụ gắn với chức danh nghề nghiệp hoặc chức vụ quản lý tương ứng, là căn cứ xác định số lượng người làm việc, cơ cấu viên chức để thực hiện việc tuyển dụng, sử dụng và quản lý viên chức trong đơn vị sự nghiệp công lập.",
+                        "Là công việc gắn với chức danh nghề nghiệp hoặc chức vụ quản lý tương ứng, là căn cứ xác định số lượng người làm việc, cơ cấu viên chức để thực hiện việc tuyển dụng, sử dụng và quản lý viên chức trong đơn vị sự nghiệp công lập.",
+                        "Là công việc gắn với chức danh nghề nghiệp hoặc chức vụ quản lý tương ứng, là căn cứ xác định số lượng người làm việc để thực hiện việc tuyển dụng, sử dụng và quản lý viên chức.",
+                        "Là công việc gắn với chức danh nghề nghiệp, là căn cứ xác định số lượng người làm việc, cơ cấu viên chức để thực hiện viện tuyển dụng, sử dụng, quản lý viên chức trong đơn vị sự nghiệp công lập."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 7. Chức danh nghề nghiệp là gì?",
+                    "answers_text": [
+                        "Là tên gọi thể hiện trình độ và năng lực chuyên môn, nghiệp vụ của viên chức trong từng lĩnh vực nghề nghiệp.",
+                        "Là tên gọi thể hiện trình độ và năng lực chuyên môn nghiệp vụ của viên chức.",
+                        "Là tên gọi thể hiện trình độ, chuyên môn, nghiệp vụ và năng lực của viên chức.",
+                        "Là tên gọi thể hiện trình độ và năng lực chuyên môn, nghiệp vụ của viên chức trong đơn vị sự nghiệp công lập."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 8. Trong hoạt động nghề nghiệp, viên chức có nghĩa vụ nào dưới đây?",
+                    "answers_text": [
+                        "Thực hiện công việc hoặc nhiệm vụ được giao bảo đảm yêu cầu về thời gian và chất lượng.",
+                        "Phối hợp tốt với đồng nghiệp trong thực hiện công việc hoặc nhiệm vụ.",
+                        "Chấp hành sự phân công công tác của người có thẩm quyền.",
+                        "Tất cả a, b và c."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 9. Việc nào dưới đây được quy định là viên chức không được làm?",
+                    "answers_text": [
+                        "Hoạt động nghề nghiệp ngoài thời gian làm việc quy định trong hợp đồng làm việc.",
+                        "Ký hợp đồng vụ việc với cơ quan, tổ chức, đơn vị khác.",
+                        "Góp vốn công ty trách nhiệm hữu hạn, công ty cổ phần, công ty hợp danh, hợp tác xã, bệnh viện tư, trường học tư và tổ chức nghiên cứu khoa học tư.",
+                        "Lợi dụng hoạt động nghề nghiệp để tuyên truyền chống lại chủ trương đường lối, chính sách của Đảng, pháp luật của Nhà nước hoặc gây phương hại đối với thuần phong, mỹ tục, đời sống văn hóa, tinh thần của nhân dân và xã hội."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 10. Tuyển dụng viên chức phải căn cứ vào đâu?",
+                    "answers_text": [
+                        "Nhu cầu công việc, vị trí việc làm, tiêu chuẩn chức danh nghề nghiệp.",
+                        "Nhu cầu công việc, vị trí việc làm, tiêu chuẩn chức danh nghề nghiệp và quỹ tiền lương của đơn vị sự nghiệp công lập.",
+                        "Nhu cầu công việc, vị trí việc làm và chỉ tiêu biên chế.",
+                        "Nhu cầu công việc, vị trí việc làm và chỉ tiêu biên chế và quỹ tiền lương của đơn vị sự nghiệp công lập."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 11. Luật Viên chức quy định viên chức được tuyển dụng thông qua phương thức nào?",
+                    "answers_text": [
+                        "Thi tuyển.",
+                        "Thi tuyển và xét tuyển.",
+                        "Xét tuyển.",
+                        "Tất cả đều sai."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 12. Theo quy định về chế độ tập sự của viên chức, phát biểu nào dưới đây là đúng?",
+                    "answers_text": [
+                        "Người trúng tuyển viên chức phải thực hiện chế độ tập sự, trừ trường hợp đã có thời gian công tác tại đơn vị sự nghiệp công lập từ đủ 12 tháng trở lên. Thời gian tập sự tùy vào vị trí việc làm và phải được quy định trong hợp đồng làm việc.",
+                        "Người trúng tuyển viên chức phải thực hiện chế độ tập sự, trừ trường hợp đã có thời gian từ đủ 12 tháng trở lên thực hiện chuyên môn, nghiệp vụ phù hợp với yêu cầu của vị trí việc làm được tuyển dụng. Thời gian tập sự từ 03 tháng đến 12 tháng và phải được quy định trong hợp đồng làm việc.",
+                        "Người trúng tuyển viên chức phải thực hiện chế độ tập sự, trừ trường hợp đã có thời gian từ đủ 12 tháng trở lên thực hiện chuyên môn, nghiệp vụ phù hợp với yêu cầu của vị trí việc làm được tuyển dụng. Thời gian tập sự từ 06 tháng đến 12 tháng và phải được quy định trong hợp đồng làm việc.",
+                        "Người trúng tuyển viên chức phải thực hiện chế độ tập sự, trừ trường hợp đã có thời gian công tác tại đơn vị sự nghiệp công lập từ đủ 12 tháng trở lên. Thời gian tập sự từ 06 tháng đến 12 tháng và phải được quy định trong hợp đồng làm việc."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 13. Đào tạo, bồi dưỡng viên chức gồm hình thức nào?",
+                    "answers_text": [
+                        "Đào tạo, bồi dưỡng theo tiêu chuẩn chức vụ quản lý.",
+                        "Bồi dưỡng theo tiêu chuẩn chức danh nghề nghiệp.",
+                        "Bồi dưỡng nhằm bổ sung, cập nhật kiến thức, kỹ năng phục vụ hoạt động nghề nghiệp.",
+                        "Tất cả đều đúng."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 14. Trách nhiệm về kinh phí đào tạo, bồi dưỡng viên chức được quy định:",
+                    "answers_text": [
+                        "Do viên chức tự bảo đảm.",
+                        "Do viên chức, nguồn tài chính của đơn vị sự nghiệp công lập và các nguồn khác bảo đảm.",
+                        "Do viên chức và nguồn tài chính của đơn vị sự nghiệp công lập bảo đảm",
+                        "Do viên chức và các nguồn khác bảo đảm."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 15. Việc đánh giá viên chức được xem xét theo các nội dung nào dưới đây?",
+                    "answers_text": [
+                        "Kết quả thực hiện công việc hoặc nhiệm vụ theo hợp đồng làm việc đã ký kết.",
+                        "Việc thực hiện quy định về đạo đức nghề nghiệp.",
+                        "Tinh thần trách nhiệm, thái độ phục vụ nhân dân, tinh thần hợp tác với đồng nghiệp và việc thực hiện quy tắc ứng xử của viên chức.",
+                        "Tất cả đều đúng."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 16. Việc bổ nhiệm viên chức quản lý phải căn cứ vào những nội dung nào?",
+                    "answers_text": [
+                        "Căn cứ vào nhu cầu của đơn vị sự nghiệp công lập.",
+                        "Căn cứ vào tiêu chuẩn, điều kiện của chức vụ quản lý và theo đúng thẩm quyền, trình tự, thủ tục.",
+                        "Căn cứ vào nhu cầu của đơn vị sự nghiệp công lập, tiêu chuẩn, điều kiện của chức vụ quản lý và theo đúng thẩm quyền, trình tự, thủ tục.",
+                        "Căn cứ kết quả bầu cử của đơn vị."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 17. Căn cứ nội dung đánh giá, viên chức được phân loại ra sao?",
+                    "answers_text": [
+                        "Hoàn thành xuất sắc nhiệm vụ; Hoàn thành tốt nhiệm vụ, Hoàn thành nhiệm vụ; Không hoàn thành nhiệm vụ.",
+                        "Hoàn thành tốt nhiệm vụ, Hoàn thành nhiệm vụ; Không hoàn thành nhiệm vụ.",
+                        "Hoàn thành xuất sắc nhiệm vụ; Hoàn thành tốt nhiệm vụ; Hoàn thành nhiệm vụ nhưng còn hạn chế về năng lực; Không hoàn thành nhiệm vụ.",
+                        "Hoàn thành tốt nhiệm vụ; Hoàn thành nhiệm vụ nhưng còn hạn chế về năng lực; Không hoàn thành nhiệm vụ."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 18. Khi chấm dứt hợp đồng làm việc, viên chức được hưởng chế độ như thế nào?",
+                    "answers_text": [
+                        "Viên chức được hưởng trợ cấp mất việc làm, chế độ bảo hiểm thất nghiệp theo quy định của pháp luật về lao động và pháp luật về bảo hiểm xã hội.",
+                        "Viên chức được hưởng trợ cấp thôi việc, trợ cấp mất việc làm hoặc chế độ bảo hiểm thất nghiệp theo quy định của pháp luật về lao động và pháp luật về bảo hiểm xã hội.",
+                        "Viên chức được hưởng trợ cấp thôi việc, trợ cấp mất việc làm theo quy định của pháp luật về lao động và pháp luật về bảo hiểm xã hội.",
+                        "Viên chức được hưởng chế độ bảo hiểm thất nghiệp theo quy định của pháp luật và các khoản hỗ trợ theo quy định của cơ quan."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 19. Viên chức được hưởng chế độ hưu trí theo quy định của?",
+                    "answers_text": [
+                        "Pháp luật về lao động và pháp luật về bảo hiểm xã hội.",
+                        "Pháp luật về lao động, pháp luật về bảo hiểm xã hội và quy định của cơ quan.",
+                        "Pháp luật về lao động.",
+                        "Pháp luật về về bảo hiểm xã hội."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 20. Việc thông báo thời điểm nghỉ hưu và quyết định nghỉ hưu đối với viên chức được thực hiện khi nào?",
+                    "answers_text": [
+                        "Tính đến ngày viên chức nghỉ hưu, đơn vị quản lý viên chức phải thông báo bằng văn bản về thời điểm nghỉ hưu trước 06 tháng; ra quyết định nghỉ hưu trước 03 tháng.",
+                        "Tính đến ngày viên chức nghỉ hưu, đơn vị quản lý viên chức phải thông báo bằng văn bản về thời điểm nghỉ hưu trước 04 tháng; ra quyết định nghỉ hưu trước 03 tháng.",
+                        "Tính đến ngày viên chức nghỉ hưu, đơn vị quản lý viên chức phải thông báo bằng văn bản về thời điểm nghỉ hưu trước 04 tháng; ra quyết định nghỉ hưu trước 02 tháng.",
+                        "Tính đến ngày viên chức nghỉ hưu, đơn vị quản lý viên chức phải thông báo bằng văn bản về thời điểm nghỉ hưu trước 03 tháng; ra quyết định nghỉ hưu trước 01 tháng."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 21. Quy định về quản lý viên chức bao gồm mấy nội dung?",
+                    "answers_text": [
+                        "5 nội dung",
+                        "7 nội dung",
+                        "8 nội dung",
+                        "9 nội dung"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 22. Các hình thức kỷ luật viên chức",
+                    "answers_text": [
+                        "Khiển trách; Cảnh cáo; Cách chức; Buộc thôi việc.",
+                        "Khiển trách; Cảnh cáo; Hạ bậc lương; Cách chức; Buộc thôi việc.",
+                        "Khiển trách; Cảnh cáo; Hạ bậc lương; Giáng chức; Cách chức; Buộc thôi việc.",
+                        "Nhắc nhở; Cảnh cáo; Hạ bậc lương; Giáng chức; Buộc thôi việc."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 23. Viên chức bị kỷ luật từ khiển trách đến cách chức thì không thực hiện việc quy hoạch, đào tạo, bồi dưỡng, bổ nhiệm trong thời hạn bao lâu kể từ ngày quyết định kỷ luật có hiệu lực?",
+                    "answers_text": [
+                        "03 tháng",
+                        "06 tháng",
+                        "09 tháng",
+                        "12 tháng"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 24: Cơ quan nào quy định nguyên tắc, phương pháp xác định vị trí việc làm, thẩm quyền, trình tự, thủ tục quyết định số lượng vị trí việc làm trong đơn vị sự nghiệp công lập.",
+                    "answers_text": [
+                        "Chính phủ",
+                        "Nhà nước",
+                        "Đảng Cộng Sản Việt Nam.",
+                        "Quốc hội"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 25: Chức danh nghề nghiệp là gì?",
+                    "answers_text": [
+                        "Chức danh nghề nghiệp là tên gọi thể hiện trình độ và năng lực chuyên môn, nghiệp vụ của viên chức trong từng lĩnh vực nghề nghiệp.",
+                        "Chức danh nghề nghiệp là tên gọi thể hiện trình độ và năng lực chuyên môn nghiệp vụ của viên chức.",
+                        "Chức danh nghề nghiệp là tên gọi thể hiện trình độ, chuyên môn, nghiệp vụ và năng lực của viên chức.",
+                        "Chức danh nghề nghiệp là tên gọi thể hiện trình độ và năng lực chuyên môn, nghiệp vụ của viên chức trong đơn vị sự nghiệp công lập."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 26: Đơn vị sự nghiệp công lập là gì?",
+                    "answers_text": [
+                        "Đơn vị sự nghiệp công lập là tổ chức do cơ quan có thẩm quyền của Nhà nước, tổ chức chính trị-xã hội thành lập theo quy định của pháp luật, có tư cách pháp nhân, cung cấp dịch vụ công, phục vụ quản lý nhà nước.",
+                        "Đơn vị sự nghiệp công lập là tổ chức do cơ quan có thẩm quyền của Nhà nước, tổ chức chính trị, tổ chức chính trị-xã hội thành lập theo quy định của pháp luật, có tư cách pháp nhân, cung cấp dịch vụ công, phục vụ quản lý nhà nước.",
+                        "Đơn vị sự nghiệp công lập là tổ chức do cơ quan có thẩm quyền của Nhà nước, tổ chức chính trị, tổ chức chính trị-xã hội thành lập theo quy định của pháp luật, có tư cách pháp nhân, cung cấp dịch vụ công.",
+                        "Đơn vị sự nghiệp công lập là tổ chức do cơ quan có thẩm quyền của Nhà nước, tổ chức chính trị, tổ chức chính trị-xã hội thành lập, có tư cách pháp nhân, cung cấp dịch vụ công, phục vụ quản lý nhà nước."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 27. Điều 20 trong chương III Tuyển dụng, sử dụng viên chức- Luật Viên Chức quy định: Căn cứ tuyển dụng: Việc tuyển dụng viên chức phải căn cứ vào nhu cầu gì?",
+                    "answers_text": [
+                        "Nhu cầu công việc",
+                        "Vị trí việc làm",
+                        "Tiêu chuẩn chức danh nghề nghiệp và quỹ tiền lương của đơn vị sự nghiệp công lập.",
+                        "Cả 3 đáp án trên đều đúng."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 28. Điều 21 trong chương III Tuyển dụng, sử dụng viên chức- Luật Viên Chức quy định: Nguyên tắc tuyển dụng gồm những nguyên tắc nào?",
+                    "answers_text": [
+                        "Bảo đảm tính cạnh tranh",
+                        "Bảo đảm công khai, minh bạch, công bằng, khách quan và đúng pháp luật.",
+                        "Uư tiên người có tài năng, người có công với cách mạng, người dân tộc thiểu số.",
+                        "Cả 3 đáp án đều đúng"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 29. Điều 21 trong chương III Tuyển dụng, sử dụng viên chức- Luật Viên Chức quy định: Nguyên tắc tuyển dụng gồm những nguyên tắc nào ?",
+                    "answers_text": [
+                        "Tuyển trọn đúng người đáp ứng yêu cầu của vị trí việc làm.",
+                        "Đề cao trách nhiệm của người đứng đầu đơn vị sự nghiệp công lập.",
+                        "Cả 2 đáp án đều đúng",
+                        "Cả 2 đáp án đều sai"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 30: Điều 25 trong Hơp đồng làm việc của chương III Tuyển dụng, sử dụng viên chức- Luật Viên Chức quy định: Có mấy loại hợp đồng làm việc?",
+                    "answers_text": [
+                        "Hợp đồng làm việc xác định thời hạn và Hợp đồng làm việc không xác định thời hạn.",
+                        "Hợp đồng làm việc xác định thời hạn",
+                        "Hợp đồng làm việc không xác định thời hạn.",
+                        "Cả 3 đều sai"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 31: Đơn vị sự nghiệp công lập được đơn phương chấm dứt hợp đồng làm việc với viên chức bị ốm đau trong thời hạn là bao lâu?",
+                    "answers_text": [
+                        "12 tháng liên tục với hợp đồng không xác định thời hạn, 6 tháng liên tục đối với hợp đồng xác định thời hạn.",
+                        "36 tháng liên tục với hđ không xác định thời hạn, 12 tháng liên tục với hợp đồng xđ thời hạn.",
+                        "Khoảng 12 tháng với hđ không xác định thời hạn, khoảng 6 tháng đối với hđ xđ thời hạn.",
+                        "Khoảng 36 tháng với hđ không xác định thời hạn, khoảng 12 tháng với hợp đồng xđ thời hạn."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 32: Viên chức có mấy năm liên tiếp bị phân loại đánh giá ở mức không hoàn thành nhiệm vụ thì bị đơn phương chấm dứt hợp đồng.",
+                    "answers_text": [
+                        "1 năm",
+                        "2 năm",
+                        "3 năm",
+                        "4 năm"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 33: Trừ trường hợp quy định tại điểm b khoản 1 điều này, người đứng đầu đơn vị sự nghiệp công lập phải báo cho viên chức biết trước bao nhiêu ngày khi đơn phương chấm dứt hợp đồng làm việc?",
+                    "answers_text": [
+                        "45 ngày đối với hđ không xđ thời hạn, 30 ngày đối với hợp đồng xác định thời hạn.",
+                        "Ít nhất 45 ngày đối với hđ không xđ thời hạn, ít nhất 30 ngày đối với hợp đồng xác định thời hạn.",
+                        "60 ngày đối với hđ không xđ thời hạn, 30 ngày đối với hợp đồng xác định thời hạn.",
+                        "Ít 60 ngày đối với hđ không xđ thời hạn, ít nhất 30 ngày đối với hợp đồng xác định thời hạn"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "",
+                    "answers_text": [
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực.",
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực trong hoạt động nghề nghiệp do tổ chức có thẩm quyền quy định.",
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực trong hoạt động nghề nghiệp do cơ quan, tổ chức có thẩm quyền quy định.",
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức trong hoạt động nghề nghiệp do cơ quan, tổ chức có thẩm quyền quy định."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 34: Đạo đức nghề nghiệp là gì?",
+                    "answers_text": [
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực.",
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực trong hoạt động nghề nghiệp do tổ chức có thẩm quyền quy định.",
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức và hành vi phù hợp với đặc thù của từng lĩnh vực trong hoạt động nghề nghiệp do cơ quan, tổ chức có thẩm quyền quy định.",
+                        "Đạo đức nghề nghiệp là những chuẩn mực về nhận thức trong hoạt động nghề nghiệp do cơ quan, tổ chức có thẩm quyền quy định."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "",
+                    "answers_text": [
+                        "Nghiêm khắc phê bình",
+                        "Khiển trách",
+                        "Cảnh cáo",
+                        "Buộc thôi việc"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 35. Lựa chọn nào dưới đây không phải là hình thức kỷ luật đối với viên chức:",
+                    "answers_text": [
+                        "Nghiêm khắc phê bình",
+                        "Khiển trách",
+                        "Cảnh cáo",
+                        "Buộc thôi việc"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 36. Đơn vị sự nghiệp công lập được đơn phương chấm dứt hợp đồng làm việc với viên chức khi:",
+                    "answers_text": [
+                        "Viên chức có 02 năm liên tiếp bị xếp loại chất lượng ở mức độ không hoàn thành nhiệm vụ.",
+                        "Viên chức không đạt yêu cầu sau thời gian tập sự.",
+                        "Khi đơn vị sự nghiệp công lập chấm dứt hoạt động theo quyết định của cơ quan có thẩm quyền.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 37. Viên chức không được hưởng trợ cấp thôi việc nếu:",
+                    "answers_text": [
+                        "Viên chức bị buộc thôi việc;",
+                        "Viên chức đơn phương chấm dứt hợp đồng làm việc mà vi phạm quy định tại các khoản 4, 5 và 6 Điều 29 của Luật Viên chức 2019.",
+                        "Viên chức chấm dứt hợp đồng làm việc do nghỉ hưu.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 38. Chọn khẳng định không đúng:",
+                    "answers_text": [
+                        "Việc bổ nhiệm viên chức quản lý phải căn cứ vào nhu cầu của đơn vị sự nghiệp công lập, tiêu chuẩn, điều kiện của chức vụ quản lý và theo đúng thẩm quyền, trình tự, thủ tục.",
+                        "Viên chức giữ chức vụ quản lý được bổ nhiệm có thời hạn không quá 5 năm.",
+                        "Khi viên chức quản lý hết thời hạn giữ chức vụ quản lý, có thể xem xét hoặc không xem xét việc bổ nhiệm lại.",
+                        "Viên chức quản lý được bố trí sang vị trí việc làm khác hoặc được bổ nhiệm chức vụ quản lý mới thì đương nhiên thôi giữ chức vụ quản lý đang đảm nhiệm, trừ trường hợp được giao kiêm nhiệm."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 39. Chọn khẳng định không đúng:",
+                    "answers_text": [
+                        "Viên chức mới trúng tuyển phải thực hiện chế độ tập sự.",
+                        "Người đã từng lao động hợp đồng ở vị trí được tuyển dụng từ 12 tháng trở lên, nay trúng tuyển viên chức không phải thực hiện chế độ tập sự.",
+                        "Viên chức được tiếp nhận có thời gian làm việc ở vị trí tiếp nhận từ 12 tháng trở lên không phải thực hiện chế độ tập sự",
+                        "Viên chức chuyển đổi từ cán bộ, công chức, đã từng làm việc ở vị trí tuyển dụng 12 tháng trở lên không phải thực hiện chế độ tập sự"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 40. Viên chức có quyền:",
+                    "answers_text": [
+                        "Hoạt động nghề nghiệp ngoài thời gian làm việc quy định trong hợp đồng làm việc.",
+                        "Ký hợp đồng vụ, việc với cơ quan, tổ chức, đơn vị khác mà pháp luật không cấm, nhưng phải hoàn thành nhiệm vụ được giao và có sự đồng ý của người đứng đầu đơn vị sự nghiệp công lập.",
+                        "Được góp vốn nhưng không tham gia quản lý, điều hành công ty trách nhiệm hữu hạn, công ty cổ phần, công ty hợp danh, hợp tác xã, bệnh viện tư, trường học tư và tổ chức nghiên cứu khoa học tư, trừ trường hợp pháp luật chuyên ngành có quy định khác. d) Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 41. Trường hợp nào không phải là viên chức quản lý:",
+                    "answers_text": [
+                        "Trưởng khoa, Phó Trưởng khoa",
+                        "Kế toán trưởng.",
+                        "Trưởng phòng chức năng, Phó Trưởng phòng chức năng",
+                        "Phó Hiệu trưởng."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 42. Nghĩa vụ chung của viên chức là",
+                    "answers_text": [
+                        "Chấp hành đường lối, chủ trương, chính sách của Đảng Cộng sản Việt Nam và pháp luật của Nhà nước. Có nếp sống lành mạnh, trung thực, cần, kiệm, liêm, chính, chí công vô tư.",
+                        "Có ý thức tổ chức kỷ luật và trách nhiệm trong hoạt động nghề nghiệp, thực hiện đúng các quy định, nội quy, quy chế làm việc của đơn vị sự nghiệp công lập. Tu dưỡng, rèn luyện đạo đức nghề nghiệp, thực hiện quy tắc ứng xử của viên chức.",
+                        "Bảo vệ bí mật nhà nước; giữ gìn và bảo vệ của công, sử dụng hiệu quả tiết kiệm tài sản được giao.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 43. Quyền của viên chức về hoạt động kinh doanh và làm việc ngoài thời gian quy định.",
+                    "answers_text": [
+                        "Được hoạt động nghề nghiệp ngoài thời gian làm việc quy định trong hợp đồng làm việc, trừ trường hợp pháp luật có quy định khác.",
+                        "Được ký hợp đồng vụ, việc với cơ quan, tổ chức, đơn vị khác mà pháp luật không cấm nhưng phải hoàn thành nhiệm vụ được giao và có sự đồng ý của người đứng đầu đơn vị sự nghiệp công lập.",
+                        "Được góp vốn nhưng không tham gia quản lý, điều hành công ty trách nhiệm hữu hạn, công ty cổ phần, công ty hợp danh, hợp tác xã, bệnh viện tư, trường học tư và tổ chức nghiên cứu khoa học tư, trừ trường hợp pháp luật chuyên ngành có quy định khác.",
+                        "Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 44. Quyền của viên chức về tiền lương và các chế độ liên quan đến tiền lương",
+                    "answers_text": [
+                        "Được trả lương tương xứng với vị trí việc làm, chức danh nghề nghiệp, chức vụ quản lý và kết quả thực hiện công việc hoặc nhiệm vụ được giao; được hưởng phụ cấp và chính sách ưu đãi trong trường hợp làm việc ở miền núi, biên giới, hải đảo, vùng sâu, vùng xa, vùng dân tộc thiểu số, vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn hoặc làm việc trong ngành nghề có môi trường độc hại, nguy hiểm, lĩnh vực sự nghiệp đặc thù.",
+                        "Được hưởng tiền làm thêm giờ, tiền làm đêm, công tác phí và chế độ khác theo quy định của pháp luật và quy chế của đơn vị sự nghiệp công lập.",
+                        "Được hưởng tiền thưởng, được xét nâng lương theo quy định của pháp luật và quy chế của đơn vị sự nghiệp công lập. d) Tất cả các lựa chọn trên"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 45. Nguyên tắc nào không phải là nguyên tắc trong hoạt động nghề nghiệp của viên chức?",
+                    "answers_text": [
+                        "Tuân thủ pháp luật, chịu trách nhiệm trước pháp luật trong quá trình thực hiện hoạt động nghề nghiệp; Tận tụy phục vụ nhân dân.",
+                        "Tuân thủ quy trình, quy định chuyên môn, nghiệp vụ, đạo đức nghề nghiệp và quy tắc ứng xử.",
+                        "Chịu sự thanh tra, kiểm tra, giám sát của cơ quan, tổ chức có thẩm quyền và của nhân dân.",
+                        "Bảo vệ lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, công dân; Bảo đảm tính hệ thống, thống nhất, liên tục, thông suốt và hiệu quả; Đúng quyền hạn được trao"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 46: Căn cứ vào Luật viên chức 2010, viên chức được bổ nhiệm vào chức vụ quản lý, điều chỉnh chức danh nghề nghiệp hoặc nhằm cập nhật, bổ sung kỹ năng, kiến thức phục vụ hoạt động nghề nghiệp thì việc bồi dưỡng và đào tạo được thực hiện khi nào?",
+                    "answers_text": [
+                        "Trước khi bổ nhiệm",
+                        "Sau khi bổ nhiệm",
+                        "Không cần bồi dưỡng đào tạo",
+                        "Tất cả các ý trên"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 47:Căn cứ vào Luật viên chức 2010, quy định về việc ra quyết định thay đổi, điều chỉnh chức danh nghề nghiệp đối với viên chức được thực hiện khi nào?",
+                    "answers_text": [
+                        "Người đứng đầu đơn vị sự nghiệp công lập có thể ra quyết định bất cứ lúc nào",
+                        "Sau khi có kết quả thi hoặc xét tuyển",
+                        "Trước khi có kết quả thi hoặc xét tuyển",
+                        "Tất cả các ý trên"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 48: Căn cứ vào Luật viên chức 2010, viên chức khi tham gia bồi dưỡng, đào tạo phải chấp hành những gì?",
+                    "answers_text": [
+                        "Chịu sự quản lý của cơ sở đào tạo, bồi dưỡng.",
+                        "Chịu sự quản lý của đơn vị sự nghiệp công lập.",
+                        "Chấp hành nghiêm chỉnh quy chế bồi dưỡng, đào tạo.",
+                        "Tất cả các ý trên."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 49:Căn cứ vào Luật viên chức 2010, viên chức được hưởng những gì khi tham gia bồi dưỡng, đào tạo?",
+                    "answers_text": [
+                        "Tiền lương",
+                        "Tiền phụ cấp theo quy định của pháp luật",
+                        "Tiền theo quy chế của đơn vị sự nghiệp công lập",
+                        "Tất cả các ý trên"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 50: Căn cứ vào Luật viên chức 2010, thời gian bồi dưỡng, đào tạo viên chức được tính như thế nào?",
+                    "answers_text": [
+                        "Không được xét nâng lương",
+                        "Được tính thời gian công tác liên tục, được xét nâng lương",
+                        "Không được tính thời gian công tác liên tục",
+                        "Tất cả các ý trên"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 51: Căn cứ vào Luật viên chức 2010, viên chức được đơn vị sự nghiệp công lập cử đi đào tạo trong trường hợp đơn phương chấm dứt hợp đồng làm việc hoặc chủ động bỏ việc thì chi phí đào tạo viên chức sẽ được giải quyết ra sao?",
+                    "answers_text": [
+                        "Viên chức không phải đền bù chi phí.",
+                        "Viên chức phải đền bù 50% chi phí đào tạo.",
+                        "Viên chức phải đền bù 70% chi phí.",
+                        "Viên chức không phải đền bù chi phí đào tạo."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 52: Viên chức giữ chức vụ quản lý có thời hạn bao nhiêu năm",
+                    "answers_text": [
+                        "5 năm",
+                        "Không quá 5 năm",
+                        "3 năm",
+                        "Không quá 3 năm"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 53: Việc bổ nhiệm viên chức quản lý phải căn cứ vào đâu?",
+                    "answers_text": [
+                        "Việc bổ nhiệm viên chức quản lý phải căn cứ vào nhu cầu của đơn vị sự nghiệp công lập, tiêu chuẩn, điều kiện của chức vụ quản lý và theo đúng thẩm quyền.",
+                        "Việc bổ nhiệm viên chức quản lý phải căn cứ vào nhu cầu của đơn vị sự nghiệp công lập, tiêu chuẩn, điều kiện của chức vụ quản lý và theo đúng thẩm quyền, trình tự, thủ tục.",
+                        "Việc bổ nhiệm viên chức quản lý phải căn cứ vào nhu cầu của đơn vị sự nghiệp công lập, điều kiện của chức vụ quản lý và theo đúng thẩm quyền, trình tự, thủ tục.",
+                        "Việc bổ nhiệm viên chức quản lý phải căn cứ vào nhu cầu của đơn vị sự nghiệp công lập, tiêu chuẩn, điều kiện và theo đúng thẩm quyền, trình tự, thủ tục."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 54: Không biệt phái viên chức nữ đang mang thai hoặc nuôi con dưới bao nhiêu tháng tuổi?",
+                    "answers_text": [
+                        "12 tháng",
+                        "18 tháng",
+                        "24 tháng",
+                        "36 tháng."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 55: Thời hạn biệt phái không quá bao nhiêu năm?",
+                    "answers_text": [
+                        "3 năm",
+                        "6 năm",
+                        "1 năm",
+                        "2 năm"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 56. Điều 39. Mục đích đánh giá viên chức quy định:",
+                    "answers_text": [
+                        "Mục đích của đánh giá viên chức để làm căn cứ tiếp tục bố trí, sử dụng viên chức.",
+                        "Mục đích của đánh giá viên chức để làm căn cứ tiếp tục bố trí, sử dụng , bổ nhiệm, miễn nhiệm viên chức.",
+                        "Mục đích của đánh giá viên chức để làm căn cứ tiếp tục bố trí, sử dụng , bổ nhiệm, miễn nhiệm, đào tạo, bồi dưỡng viên chức.",
+                        "Mục đích của đánh giá viên chức để làm căn cứ tiếp tục bố trí, sử dụng , bổ nhiệm, miễn nhiệm, đào tạo, bồi dưỡng , khen thưởng, kỉ luật và thực hiện chế độ, chính sách đối với viên chức."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 57. Điều 42 Phân loại đánh giá viên chức quy định: Hằng năm, căn cứ vào nội dung đánh giá, viên chức được phân thành mấy loại?",
+                    "answers_text": [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 58. Điều 43 quy định trách nhiệm đánh giá viên chức thuộc thẩm quyền quản lí thuộc về ai?",
+                    "answers_text": [
+                        "Chính phủ",
+                        "Bộ giáo dục & Đào tạo",
+                        "Đơn vị công lập",
+                        "Người đứng đầu đơn vị sự nghiệp công lập"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 59. Điều 43 quy định chi tiết trình tự, thủ tục đánh giá viên chức do cơ quan nào",
+                    "answers_text": [
+                        "Chính phủ",
+                        "Bộ giáo dục & Đào tạo",
+                        "Đơn vị công lập",
+                        "Người đứng đầu đơn vị sự nghiệp công lập"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 60. Điều 44 thông báo kết quả đánh giá, phân loại viên chức quy định.",
+                    "answers_text": [
+                        "Nội dung đánh giá viên chức phải được thông báo cho viên chức.",
+                        "Kết quả phân loại viên chức được công khai trong đơn vị sự nghiệp công lập.",
+                        "Nếu không nhất trí với kết quả đánh giá và phân loại thì viên chức được quyền khiếu nại lên cấp có thẩm quyền.",
+                        "Tất cả đáp án trên đều đúng"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 61. Điều 46 Chế độ hưu trí quy định: viên chức được hưởng chế độ hưu trí theo quy định của?",
+                    "answers_text": [
+                        "Pháp luật về lao động",
+                        "Pháp luật về bảo hiểm xã hội",
+                        "Pháp luật về lao động và Pháp luật về bảo hiểm xã hội",
+                        "Hội đồng nhà trường"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 62. Điều 47. Quản lí nhà nước về viên chức quy định cơ quan thống nhất quản lí nhà nước về viên chức là?",
+                    "answers_text": [
+                        "Nhà nước",
+                        "Đơn vị sự nghiệp công lập",
+                        "Chính phủ",
+                        "Cả 3 đều đúng"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 63. Điều 52 Các hình thức kỉ luật đối với viên chức quy định: Hình thức kỉ luật cách chức chỉ áp dụng đối với.",
+                    "answers_text": [
+                        "Viên chức",
+                        "Cán bộ",
+                        "Viên chức quản lí",
+                        "Cả 3 đều sai."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 64. Điều 52 Các hình thức kỉ luật đối với viên chức quy định: cơ quan nào quy định việc áp dụng các hình thức kỉ luật, trình tự, thủ tục và thẩm quyền xử lí kỉ luật đối với viên chức. ?",
+                    "answers_text": [
+                        "Đơn vị sự nghiệp công lập",
+                        "Bộ giáo dục và đào tạo",
+                        "Chính phủ",
+                        "Các bộ, cơ quan ngang bộ"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 65. Điều 54 tạm đình chỉ công tác quy định: trong thời hạn xử lí kỉ luật ai là người quyết định tạm đình chỉ công tác của viên chức nếu tháy viên chức tiếp tục làm việc có thể gây khó khăn cho việc xem xét, xử lí kỉ luật",
+                    "answers_text": [
+                        "Chính phủ",
+                        "Người đúng đầu đơn vị sự nghiệp công lập",
+                        "Đơn vị sự nghiệp công lập.",
+                        "Bộ giáo dục và đào tạo"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 66: Điều 61: Hiệu lực thi hành: Luật viên chức có hiệu lực thi hành từ ngày?",
+                    "answers_text": [
+                        "01/01/2010",
+                        "01/01/2011",
+                        "01/01/2012",
+                        "01/01/2013"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 67. Luật viên chức được Quốc hội nước Cộng hòa xã hội chủ nghĩa Việt Nam khóa XII, kì họp thứ 8 thông qua ngày?",
+                    "answers_text": [
+                        "15/9/2010",
+                        "15/11/2010",
+                        "15/10/2010",
+                        "15/12/2010"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 68. Luật Viên chức gồm bao nhiêu chương, bao nhiêu điều?",
+                    "answers_text": [
+                        "6 chương, 60 điều",
+                        "7 chương, 62 điều.",
+                        "6 chương, 62 điều",
+                        "7 chương, 70 điều"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 69: Điều 58 Chuyển đổi giữa viên chức và cán bộ, công chức: cơ quan nào quy định việc Chuyển đổi giữa viên chức và cán bộ, công chức?",
+                    "answers_text": [
+                        "Người đứng đầu đơn vị sự nghiệp công lập.",
+                        "Chính phủ",
+                        "Nhà nước",
+                        "Các bộ, cơ quan ngang bộ"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 70: Điều 54 tạm đình chỉ công tác quy định : Hết thời gian tạm đình chỉ công tác, nếu viên chức không bị xử lí kỉ luật thì được?",
+                    "answers_text": [
+                        "bổ nhiệm vào vị trí việc làm cũ",
+                        "bổ nhiệm vào vị trí việc làm khác",
+                        "chấm dứt hợp đồng làm việc",
+                        "Cả 3 đều sai"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 71. Điều 54 tạm đình chỉ công tác quy định: trong thời hạn xử lí kỉ luật ai là người quyết định tạm đình chỉ công tác của viên chức nếu tháy viên chức tiếp tục làm việc có thể gây khó khăn cho việc xem xét, xử lí kỉ luật",
+                    "answers_text": [
+                        "Chính phủ",
+                        "Người đúng đầu đơn vị sự nghiệp công lập",
+                        "Đơn vị sự nghiệp công lập.",
+                        "Bộ giáo dục và đào tạo"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 72: Theo Luật giáo dục 2019, Thực hiện xã hội hóa việc biên soạn sách giáo khoa; việc xuất bản sách giáo khoa thực hiện theo quy định của?",
+                    "answers_text": [
+                        "Quốc hội",
+                        "Bộ Giáo dục và Đào tạo",
+                        "Pháp luật",
+                        "Chính phủ"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 73: Theo Luật giáo dục 2019, \"Đào tạo nhân lực trực tiếp cho sản xuất, kinh doanh và dụch vụ, có năng lực hành nghề tương ứng với trình độ đào tạo; có đạo đức, sức khỏe; có trách nhiệm nghề nghiệp; có khả năng sáng tạo, thích ứng với môi trường hội nhập quốc tế; bảo đảm nâng cao năng suất, chất lượng lao động; tạo điều kiện cho người học sau khi hoàn thành khóa học có khả năng tìm việc làm, tự tạo việc làm hoặc học trình độ cao hơn\" là của Mục tiêu của giáo dục nào sau đây?",
+                    "answers_text": [
+                        "Mục tiêu của giáo dục thường xuyên",
+                        "Mục tiêu của giáo dục đại học",
+                        "Mục tiêu của giáo dục nghề nghiệp",
+                        "Mục tiêu của giáo dục phổ thông"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 74: Theo Luật giáo dục 2019. Kiểm định chất lượng giáo dục là?",
+                    "answers_text": [
+                        "Đơn vị học tập được tích hợp giữa kiến thức, kỹ năng và thái độ một cách hoàn chỉnh nhằm giúp cho người học có năng lực thực hiện trọn vẹn một hoặc một số công việc của một nghề.",
+                        "Hoạt động đánh giá, công nhận cơ sở giáo dục hoặc chương trình đào tạo đạt tiêu chuẩn chất lượng giáo dục do cơ quan, tổ chức có thẩm quyền ban hành.",
+                        "Yêu cầu cần đạt về phẩm chất và năng lực của người học sau khi hoàn thành một chương trình giáo dục",
+                        "Kiến thức, kỹ năng cơ bản, cốt lõi trong chương trình giáo dục trung học phổ thông mà người học phải tích lũy để có thể tiếp tục học trình độ giáo dục nghề nghiệp cao hơn."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 75: Theo Luật giáo dục 2019. Giáo dục bắt buộc là?",
+                    "answers_text": [
+                        "Giáo dục mà mọi công dân trong độ tuổi quy định bắt buộc phải học tập để đạt được trình độ học vấn tối thiểu theo quy định của pháp luật và được Nhà nước bảo đảm điều kiện để thực hiện",
+                        "Giáo dục để thực hiện một chương trình giáo dục nhất định, được tổ chức linh hoạt về hình thức thực hiện chương trình, thời gian, phương pháp, địa điểm, đáp ứng nhu cầu học tập suốt đời của người học.",
+                        "Quá trình tổ chức hoạt động giáo dục để mọi công dân trong độ tuổi đều được học tập và đạt đến trình độ học vấn nhất định theo quy định của pháp luật.",
+                        "Giáo dục theo khóa học trong cơ sở giáo dục để thực hiện một chương trình giáo dục nhất định, được thiết lập theo mục tiêu của các cấp học, trình độ đào tạo và được cấp văn bằng của hệ thống giáo dục quốc dân."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 76: Theo Luật giáo dục 2019. Phổ cập giáo dục là?",
+                    "answers_text": [
+                        "Giáo dục theo khóa học trong cơ sở giáo dục để thực hiện một chương trình giáo dục nhất định, được thiết lập theo mục tiêu của các cấp học, trình độ đào tạo và được cấp văn bằng của hệ thống giáo dục quốc dân.",
+                        "Quá trình tổ chức hoạt động giáo dục để mọi công dân trong độ tuổi đều được học tập và đạt đến trình độ học vấn nhất định theo quy định của pháp luật.",
+                        "Giáo dục mà mọi công dân trong độ tuổi quy định bắt buộc phải học tập để đạt được trình độ học vấn tối thiểu theo quy định của pháp luật và được Nhà nước bảo đảm điều kiện để thực hiện",
+                        "Giáo dục để thực hiện một chương trình giáo dục nhất định, được tổ chức linh hoạt về hình thức thực hiện chương trình, thời gian, phương pháp, địa điểm, đáp ứng nhu cầu học tập suốt đời của người học."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 77: Theo Luật giáo dục 2019. Chọn phương án đúng về Tính chất, nguyên lý giáo dục?",
+                    "answers_text": [
+                        "Tất cả các phương án đều đúng",
+                        "Hoạt động giáo dục nhằm phát triển toàn diện con người Việt Nam có đạo đức, tri thức, văn hóa, sức khỏe, thẩm mỹ và nghề nghiệp",
+                        "Hoạt động giáo dục nhằm nâng cao dân trí, phát triển nguồn nhân lực, bồi dưỡng nhân tài, đáp ứng yêu cầu của sự nghiệp xây dựng, bảo vệ Tổ quốc và hội nhập quốc tế.",
+                        "Hoạt động giáo dục được thực hiện theo nguyên lý học đi đôi với hành, lý luận gắn liền với thực tiễn, giáo dục nhà trường kết hợp với giáo dục gia đình và giáo dục xã hội."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 78: Theo Luật giáo dục 2019. Giáo dục thường xuyên là?",
+                    "answers_text": [
+                        "Giáo dục mà mọi công dân trong độ tuổi quy định bắt buộc phải học tập để đạt được trình độ học vấn tối thiểu theo quy định của pháp luật và được Nhà nước bảo đảm điều kiện để thực hiện",
+                        "Giáo dục để thực hiện một chương trình giáo dục nhất định, được tổ chức linh hoạt về hình thức thực hiện chương trình, thời gian, phương pháp, địa điểm, đáp ứng nhu cầu học tập suốt đời của người học.",
+                        "Quá trình tổ chức hoạt động giáo dục để mọi công dân trong độ tuổi đều được học tập và đạt đến trình độ học vấn nhất định theo quy định của pháp luật.",
+                        "Giáo dục theo khóa học trong cơ sở giáo dục để thực hiện một chương trình giáo dục nhất định, được thiết lập theo mục tiêu của các cấp học, trình độ đào tạo và được cấp văn bằng của hệ thống giáo dục quốc dân."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 79. Nhà giáo được xếp lương phù hợp với vị trí việc làm và lao động nghề nghiệp; được ưu tiên hưởng phụ cấp đặc thù nghề theo quy định của cơ quan nào?",
+                    "answers_text": [
+                        "Quốc hội",
+                        "Chính phủ.",
+                        "Bộ Nội vụ",
+                        "Bộ Giáo dục và Đào tạo"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 80. Thẩm quyền cho phép hoạt động giáo dục đối với cơ sở giáo dục đại học?",
+                    "answers_text": [
+                        "Chủ tịch UBND cấp huyện",
+                        "Chủ tịch UBND cấp tỉnh",
+                        "Bộ trưởng Bộ Giáo dục và Đào tạo",
+                        "Thủ tướng Chính phủ"
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 81. Ngân sách nhà nước chi cho giáo dục được phân bổ như thế nào?",
+                    "answers_text": [
+                        "theo nguyên tắc công khai, dân chủ; căn cứ vào quy mô giáo dục, điều kiện phát triển kinh tế – xã hội của từng vùng; bảo đảm ngân sách để thực hiện phổ cập giáo dục, phát triển giáo dục ở vùng dân tộc thiểu số và vùng có điều kiện kinh tế – xã hội đặc biệt khó khăn.",
+                        "theo nguyên tắc tập trung, dân chủ; căn cứ vào quy mô giáo dục, điều kiện phát triển kinh tế – xã hội của từng vùng; bảo đảm ngân sách để thực hiện phổ cập giáo dục, phát triển giáo dục ở vùng dân tộc thiểu số và vùng có điều kiện kinh tế – xã hội đặc biệt khó khăn.",
+                        "theo nguyên tắc công khai, dân chủ; căn cứ vào quy mô giáo dục, điều kiện phát triển kinh tế – xã hội của từng vùng; bảo đảm ngân sách để thực hiện phổ cập giáo dục, phát triển giáo dục ở vùng dân tộc thiểu số và vùng có điều kiện kinh tế – xã hội khó khăn.",
+                        "theo nguyên tắc công khai, dân chủ; căn cứ vào quy mô giáo dục, điều kiện phát triển kinh tế – xã hội của từng vùng; bảo đảm ngân sách để thực hiện phổ cập giáo dục, phát triển giáo dục ở vùng dân tộc thiểu số."
+                    ],
+                    "correct_index": 0
+                }
+            ],
+            question_3: [
+                {
+                    "question_text": "Câu 1. Những người lao động nào sau đây bắt buộc phải đóng Bảo hiểm xã hội?",
+                    "answers_text": [
+                        "Người lao động làm việc theo hợp đồng lao động không xác định thời hạn.",
+                        "Cán bộ, công chức, viên chức.",
+                        "Sỹ quan quân đội, công an.",
+                        "Tất cả các đối tượng trên."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 2. Người lao động ký Hợp đồng lao động có thời hạn bao lâu thuộc đối tượng lao động phải đóng Bảo hiểm xã hội bắt buộc?",
+                    "answers_text": [
+                        "1 tháng.",
+                        "3 tháng.",
+                        "2 tháng.",
+                        "Tất cả đều đúng"
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 3. Người lao động tham gia Bảo hiểm xã hội bắt buộc được hưởng những chế độ nào?",
+                    "answers_text": [
+                        "Ốm đau, thai sản, tử tuất, tai nạn lao động.",
+                        "Ốm đau, thai sản, hưu trí, tử tuất.",
+                        "Ốm đau, thai sản, hưu trí, tử tuất,tainạnlaođộng,bệnhnghềnghiệp.",
+                        "Ốm đau, thai sản, tử tuất."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 4. Bảo hiểm xã hội tự nguyện gồm những chế độ nào?",
+                    "answers_text": [
+                        "Ốm đau, thai sản, hưu trí, tử tuất.",
+                        "Hưu trí, tử tuất.",
+                        "Tai nạn lao động, bệnh nghề nghiệp, ốm đau, thai sản.",
+                        "Ốm đau, thai sản, hưu trí ."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 5. Chị M làm việc theo Hợp đồng lao động không xác định thời hạn cho doanh nghiệp A. Hàng tháng, chị M phải đóng bao nhiêu % Bảo hiểm xã hội?",
+                    "answers_text": [
+                        "8% mứctiềnlươngtháng vào quỹ hưu trí và tử tuất.",
+                        "10% mức tiền lương tháng vào quỹ hưu trí và tử tuất.",
+                        "10,5 % mức tiền lương tháng vào quỹ hưu trí và tử tuất.",
+                        "11 % mức tiền lương tháng vào quỹ hưu trí và tử tuất."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 6. Hàng tháng, người sử dụng lao động đóng bao nhiêu % Bảo hiểm y tế cho Người lao động làm việc theo Hợp đồng làm việc không xác định thời hạn?",
+                    "answers_text": [
+                        "1%.",
+                        "2 %.",
+                        "3%.",
+                        "4%."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 7. Hàng tháng, người sử dụng lao động đóng bao nhiêu % Bảo hiểm thất nghiệp cho Người lao động làm việc theo Hợp đồng làm việc không xác định thời hạn?",
+                    "answers_text": [
+                        "1%.",
+                        "2 %.",
+                        "3%.",
+                        "4%."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 8. Lao động nữ đóng Bảo hiểm xã hội bao lâu thì được hưởng chế độ thai sản khi sinh?",
+                    "answers_text": [
+                        "Từ đủ 06 tháng trở lên trong thời gian 12 tháng trước khi sinh con.",
+                        "Từ đủ 07 tháng trở lên trong thời gian 12 tháng trước khi sinh con.",
+                        "Từ đủ 08 tháng trở lên trong thời gian 12 tháng trước khi sinh con.",
+                        "Từ đủ 09 tháng trở lên trong thời gian 12 tháng trước khi sinh con."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 9. Chị B đóng Bảo hiểm xã hội được 2 năm thì sinh đôi 2 bé. Thời gian nghỉ theo chế độ thai sản của chị B là bao lâu?",
+                    "answers_text": [
+                        "06 tháng cả trước và sau khi sinh.",
+                        "08 tháng cả trước và sau khi sinh.",
+                        "07 tháng cả trước và sau khi sinh.",
+                        "09 tháng cả trước và sau khi sinh."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 10. Chị M đang nghỉ sinh con theo chế độ thai sản. Chị dự định đi làm lại khi chưa hết thời gian nghỉ thì phải đáp ứng điều kiện gì?",
+                    "answers_text": [
+                        "Sau khi đã nghỉ hưởng chế độ ít nhất được 02 tháng + phải báo trước và được Người sử dụng lao động đồng ý.",
+                        "Sau khi đã nghỉ hưởng chế độ ít nhất được 03 tháng + phải báo trước và được Người sử dụng lao động đồng ý.",
+                        "Sau khi đã nghỉ hưởng chế độ ít nhất được 04 tháng và phải báo trước và được Người sử dụng lao động đồng ý.",
+                        "Sau khi đã nghỉ hưởng chế độ ít nhất được 03 tháng 15 ngày."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 11. Người lao động làm việc trong điều kiện bình thường được hưởng lương hưu khi nào?",
+                    "answers_text": [
+                        "Nam đủ 60 tuổi, nữ đủ 55 tuổi và có đủ 17 năm đóng Bảo hiểm xã hội trở lên.",
+                        "Nam đủ 60 tuổi, nữ đủ 55 tuổi và có đủ 18 năm đóng Bảo hiểm xã hội trở lên.",
+                        "Nam đủ 60 tuổi, nữ đủ 55 tuổi và có đủ 19 năm đóng Bảo hiểm xã hội trở lên.",
+                        "Nam đủ 60 tuổi, nữ đủ 55 tuổi và có đủ 20 năm đóng Bảo hiểm xã hội trở lên."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 12. Người lao động được hưởng trợ cấp 1 lần khi nghỉ hưu nếu đáp ứng điều kiện nào?",
+                    "answers_text": [
+                        "Có thời gian đóng bảo hiểm xã hội cao hơn số năm tương ứng lương hưu 60%.",
+                        "Có thời gian đóng bảo hiể m xã hội cao hơn số năm tương ứng lương hưu 65%.",
+                        "Có thời gian đóng bảo hiểm xã hội cao hơn số năm tương ứng lương hưu 70%.",
+                        "Có thời gian đóng bảo hiểm xã hội cao hơn số năm tương ứng lương hưu 75%."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 13. Trường hợp nào sau đây Người lao động đang đóng Bảo hiểm xã hội bắt buộc được hưởng Bảo hiểm xã hội 1 lần?",
+                    "answers_text": [
+                        "Ra nước ngoài để định cư.",
+                        "Đủ tuổi hưởng lương hưu mà chưa đủ năm đóng Bảo hiểm xã hội và không tiếp tục tham gia Bảo hiểm xã hội tự nguyện.",
+                        "Bị bệnh nguy hiểm đến tính mạng mạng như ung thư, bại liệt, xơ gan, phong, lao, nhiễm HIV đã chuyển sang AIDS,……",
+                        "Cả ba trường hợp trên."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 14. Anh A đóng Bảo hiểm xã hội bắt buộc được 10 tháng thì ngừng đóng. Nếu thuộc trường hợp được hưởng Bảo hiểm xã hội 1 lần thì mức hưởng của anh A là bao nhiêu?",
+                    "answers_text": [
+                        "Bằng số tiền đã đóng, tối đa bằng 02 tháng mức bình quân tiền lương tháng đóng Bảo hiểm xã hội.",
+                        "01 tháng mức bình quân tiền lương tháng đóng Bảo hiểm xã hội.",
+                        "03 tháng mức bình quân tiền lương tháng đóng Bảo hiểm xã hội.",
+                        "04 tháng mức bình quân tiền lương tháng đóng Bảo hiểm xã hội."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 15. Mức hưởng trợ cấp mai táng đối với Người lao động tham gia Bảo hiểm xã hội bắt buộc theo quy định hiện hành là bao nhiêu?",
+                    "answers_text": [
+                        "Bằng 05 lần mức lương cơ sở tại tháng mà NLĐ đang đóng BHXH mất.",
+                        "Bằng 10 lần mức lương cơ sở tại tháng mà NLĐ đang đóng Bảo hiểm xã hội mất.",
+                        "Bằng 15 lần mức lương cơ sở tại tháng mà NLĐ đang đóng BHXH mất.",
+                        "Bằng 20 lần mức lương cơ sở tại tháng mà NLĐ đang đóng BHXH mất."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 16. Người lao động nam nghỉ hưu từ 01/01/2019 (đủ điều kiện nhận lương hưu), lương hưu của người lao động tham gia Bảo hiểm xã hộiđược tính như thế nào?",
+                    "answers_text": [
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 16 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 17 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "50% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 18 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "55% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 19 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 17. Người lao động nam nghỉ hưu từ 01/01/2022 (đủ điều kiện nhận lương hưu), lương hưu của người lao động tham gia Bảo hiểm xã hội được tính như thế nào?",
+                    "answers_text": [
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 17 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 18 năm đóng Bảo hiểm xã hội Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 20 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 21 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 18. Người lao động nữ nghỉ hưu từ 01/01/2019 (đủ điều kiện nhận lương hưu), lương hưu của người lao động tham gia Bảo hiểm xã hộiđược tính như thế nào?",
+                    "answers_text": [
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 14 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 15 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 16 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 17 năm đóng Bảo hiểm xã hội Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%."
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 19. Người lao động nữ nghỉ hưu từ 01/01/2022 (đủ điều kiện nhận lương hưu), lương hưu của người lao động tham gia Bảo hiểm xã hội được tính như thế nào?",
+                    "answers_text": [
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 15 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 16 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 17 năm đóng Bảo hiểm xã hội Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%.",
+                        "45% mức bình quân lương tháng đóng Bảo hiểm xã hội tương ứng với 18 năm đóng Bảo hiểm xã hội. Sau đó cứ mỗi năm tính thêm 2%, tối đa bằng 75%."
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 20: Theo quy định của Luật bảo hiểm xã hội 2014, người lao động tham gia bảo hiểm xã hội bắt buộc được hưởng những chế độ nào? a. Ốm đau, thai sản, tử tuất, tai nạn lao động",
+                    "answers_text": [
+                        "Ốm đau, thai sản, hưu trí, tử tuất",
+                        "Ốm đau, thai sản, hưu trí, tử tuất, tai nạn lao động, bệnh nghề nghiệp",
+                        "Ốm đau, thai sản, hưu trí, tử tuất, tai nạn lao động"
+                    ],
+                    "correct_index": 1
+                },
+                {
+                    "question_text": "Câu 21: Luật Thực hành tiết kiệm, chống lãng phí quy định về những lĩnh vực nào?",
+                    "answers_text": [
+                        "Quản lý, sử dụng ngân sách nhà nước.",
+                        "Hoạt động sản xuất và kinh doanh.",
+                        "Quản lý và sử dụng nguồn lực nhà nước.",
+                        "Cả a, b và c."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 22. Đối tượng nào được áp dụng theo quy định của Luật Thực hành tiết kiệm, chống lãng phí?",
+                    "answers_text": [
+                        "Chỉ áp dụng cho cơ quan và tổ chức nhà nước.",
+                        "Chỉ áp dụng cho cá nhân.",
+                        "Áp dụng cho cơ quan, tổ chức, cá nhân trong khu vực nhà nước.",
+                        "Chỉ áp dụng cho cơ quan và tổ chức quản lý ngân sách nhà nước."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 23. Đối tượng nào không thuộc phạm vi áp dụng của Luật Thực hành tiết kiệm, chống lãng phí?",
+                    "answers_text": [
+                        "Tổ chức và hộ gia đình.",
+                        "Cơ quan và tổ chức nhà nước.",
+                        "Cá nhân.",
+                        "Tất cả đều thuộc phạm vi áp dụng."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 24. Luật Thực hành tiết kiệm, chống lãng phí áp dụng cho việc quản lý và sử dụng những nguồn lực nào?",
+                    "answers_text": [
+                        "Ngân sách nhà nước.",
+                        "Vốn nhà nước.",
+                        "Tài sản nhà nước.",
+                        "Tất cả đều đúng."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 25. Theo Luật Thực hành tiết kiệm, chống lãng phí, khái niệm “tiết kiệm” có nghĩa là gì?",
+                    "answers_text": [
+                        "là việc giảm bớt hao phí trong sử dụng vốn, tài sản, lao động, thời gian lao động và tài nguyên nhưng vẫn đạt được mục tiêu đã định.",
+                        "Sử dụng vốn, tài sản, lao động và thời gian lao động ở mức thấp hơn định mức.",
+                        "Sử dụng đúng định mức, tiêu chuẩn, chế độ nhưng đạt cao hơn mục tiêu đã định.",
+                        "Đạt mục tiêu đã định mà không cần giảm bớt hao phí"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 26. Đối với việc quản lý, sử dụng ngân sách nhà nước, vốn nhà nước, tài sản nhà nước, lao động, thời gian lao động trong khu vực nhà nước và tài nguyên ở những lĩnh vực đã có định mức, tiêu chuẩn, chế độ do cơ quan nhà nước có thẩm quyền ban hành thì tiết kiệm là ?",
+                    "answers_text": [
+                        "việc sử dụng ở mức thấp hơn định mức, tiêu chuẩn, chế độ nhưng vẫn đạt được mục tiêu đã định",
+                        "việc sử dụng đúng định mức, tiêu chuẩn, chế độ nhưng đạt cao hơn mục tiêu đã định.",
+                        "việc sử dụng ở mức thấp hơn định mức, tiêu chuẩn, chế độ nhưng vẫn đạt được mục tiêu đã định hoặc sử dụng đúng định mức, tiêu chuẩn, chế độ nhưng đạt cao hơn mục tiêu đã định.",
+                        "việc sử dụng ở mức thấp hơn định mức, tiêu chuẩn, chế độ nhưng vẫn đạt được mục tiêu đã định và sử dụng đúng định mức, tiêu chuẩn, chế độ nhưng đạt cao hơn mục tiêu đã định."
+                    ],
+                    "correct_index": 2
+                },
+                {
+                    "question_text": "Câu 27. Theo Luật thực hành tiết kiệm chống lãng phí thì Lãng phí là ?",
+                    "answers_text": [
+                        "việc quản lý, sử dụng vốn, tài sản, lao động, thời gian lao động và tài nguyên hiệu quả không cao",
+                        "việc quản lý, sử dụng vốn, tài sản, lao động, thời gian lao động và tài nguyên đạt hiệu quả thấp",
+                        "việc quản lý, sử dụng vốn, tài sản, lao động, thời gian lao động và tài nguyên chưa hiệu quả.",
+                        "việc quản lý, sử dụng vốn, tài sản, lao động, thời gian lao động và tài nguyên không hiệu quả."
+                    ],
+                    "correct_index": 3
+                },
+                {
+                    "question_text": "Câu 28. Đối với lĩnh vực đã có định mức, tiêu chuẩn, chế độ do cơ quan nhà nước có thẩm quyền ban hành thì lãng phí là ?",
+                    "answers_text": [
+                        "việc quản lý, sử dụng ngân sách nhà nước, vốn nhà nước, tài sản nhà nước, lao động, thời gian lao động trong khu vực nhà nước và tài nguyên vượt định mức, tiêu chuẩn, chế độ hoặc không đạt mục tiêu đã định.",
+                        "việc quản lý, sử dụng ngân sách nhà nước, vốn nhà nước, tài sản nhà nước, lao động, thời gian lao động trong khu vực nhà nước và tài nguyên không đạt mục tiêu đã định.",
+                        "việc quản lý, sử dụng ngân sách nhà nước, vốn nhà nước, tài sản nhà nước, lao động, thời gian lao động trong khu vực nhà nước và tài nguyên vượt định mức, tiêu chuẩn, chế độ"
+                    ],
+                    "correct_index": 0
+                },
+                {
+                    "question_text": "Câu 29. Đâu không phải là Nguyên tắc ban hành định mức, tiêu chuẩn, chế độ áp dụng chung trong cả nước hoặc trong ngành, lĩnh vực, địa phương?",
+                    "answers_text": [
+                        "Tập trung dân chủ",
+                        "Phù hợp với khả năng của ngân sách nhà nước và chức năng, nhiệm vụ được giao;",
+                        "Căn cứ vào yêu cầu phát triển kinh tế – xã hội để ban hành hoặc rà soát sửa đổi, bổ sung kịp thời;",
+                        "Định mức, tiêu chuẩn, chế độ áp dụng trong ngành, lĩnh vực, địa phương phải phù hợp với định mức, tiêu chuẩn, chế độ quy định áp dụng chung trong cả nước, trừ trường hợp pháp luật có quy định khác;"
+                    ],
+                    "correct_index": 0
+                }
+            ]
+        };
+        let currentQuestionBank = "question_0"; // Keeps track of current question bank
+        let currentQuestionIndex = 0; // Keeps track of current question within the bank
+
+        // Function to load questions from JSON file
+        function loadQuestions() {
+            showQuestion();
+            // fetch("your_questions.json")
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         questions = data;
+            //         showQuestion();
+            //     })
+            //     .catch(error => console.error("Error loading questions:", error));
+        }
+
+        // Function to show the current question
+        function showQuestion() {
+            const questionDiv = document.getElementById("q-content");
+            if (!questionDiv) return; // Check if div exists
+
+            if (!currentQuestionBank) {
+                questionDiv.innerHTML = "Please select a question bank.";
+                return;
+            }
+
+            const currentQuestions = questions[currentQuestionBank];
+            if (currentQuestions.length === 0) {
+                messageElement.textContent = "No questions in this bank!";
+                return;
+            }
+
+            const question = currentQuestions[currentQuestionIndex % currentQuestions.length]; // Handle reaching end of bank
+            questionDiv.innerHTML = `
+    <h3>${question.question_text}</h3>
+    <ul>
+      ${question.answers_text.map((answer, index) => `
+        <li>
+          <input type="radio" id="answer-${index}" name="answer" value="${index}" onchange="checkAnswer(${index})">
+          <label for="answer-${index}">${answer}</label>
+        </li>
+      `).join("")}
+    </ul>
+  `;
+
+            const messageElement = document.getElementById("notify_message");
+            messageElement.textContent = "";
+        }
+
+        // Function to handle check answer on radio selection (unchanged)
+        function checkAnswer(selectedAnswerIndex) {
+            const correctIndex = questions[currentQuestionBank][currentQuestionIndex].correct_index;
+            const messageElement = document.getElementById("notify_message");
+            messageElement.textContent = selectedAnswerIndex === correctIndex ? "Correct!" : "Incorrect";
+        }
+
+        // Function to handle radio button selection for question bank
+        function selectQuestionBank(selectedBank) {
+            currentQuestionBank = selectedBank;
+            currentQuestionIndex = 0; // Reset question index when bank changes
+            showQuestion();
+        }
+
+        // Load questions on page load
+        loadQuestions();
+
+        // Add event listeners for radio buttons
+        const radioButtons = document.querySelectorAll('input[type="radio"][name="question-bank"]');
+        radioButtons.forEach(button => button.addEventListener('change', () => selectQuestionBank(button.value)));
+
+        // No event listener needed for check button as notification happens on radio selection
+
+        // Function to clear notification message
+        function clearNotification() {
+            const messageElement = document.getElementById("notify_message");
+            if (messageElement) {
+                messageElement.textContent = "";
+            }
+        }
+
+        // Function to handle next button click
+        function nextQuestion() {
+
+            currentQuestionIndex = Math.floor(Math.random() * questions[currentQuestionBank].length);
+
+            showQuestion();
+        }
+
+
+        // Load questions on page load
+        loadQuestions();
+
+        // Add event listeners for buttons (replace with your button element selection)
+        document.getElementById("next-button").addEventListener("click", nextQuestion);
+        document.getElementById("back-button").addEventListener("click", backQuestion);
+        document.getElementById("check-button").addEventListener("click", checkAnswer);
+
+    </script>
+</body>
+
+</html>
