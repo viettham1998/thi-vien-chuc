@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <style>
+    <style>
         button {
+            touch-action: manipulation;
             background-color: #04AA6D;
             /* Green */
             border: none;
@@ -22,17 +23,20 @@
 
 <body>
     <div style="padding: 2rem;">
-        <input id="q1" type="radio" name="question-bank" value="question_0" label="test"><label for="q1">Hiến pháp
-            (20)</label>
-        <input id="q2" type="radio" name="question-bank" value="question_1" label="test"><label for="q2">Luật giáo dục
-            (50)</label>
-        <input id="q3" type="radio" name="question-bank" value="question_2" label="test"><label for="q3">Luật viên chức
-            (81)</label>
-        <input id="q3" type="radio" name="question-bank" value="question_3" label="test"><label for="q3">Luật khác
-            (29)
-        </label>
+        <div style="padding: 0.5rem;"><input id="q1" type="radio" name="question-bank" value="question_0"
+                label="test"><label for="q1">Hiến pháp
+                (20)</label></div>
+        <div style="padding: 0.5rem;"><input id="q2" type="radio" name="question-bank" value="question_1"
+                label="test"><label for="q2">Luật giáo dục
+                (50)</label></div>
+        <div style="padding: 0.5rem;"><input id="q3" type="radio" name="question-bank" value="question_2"
+                label="test"><label for="q3">Luật viên chức
+                (81)</label></div>
+        <div style="padding: 0.5rem;"><input id="q3" type="radio" name="question-bank" value="question_3"
+                label="test"><label for="q3">Luật khác
+                (29)
+            </label></div>
     </div>
-    <button style="margin: 2rem; padding: 2rem;" id="check-button">Check</button>
     <button style="margin: 2rem; padding: 2rem;" id="next-button">Next</button>
     <div id="q-content"></div>
     <p id="notify_message"></p>
@@ -80,13 +84,14 @@
                     "correct_index": 0
                 },
                 {
-                    "question_text": "Câu 5. Theo Hiến pháp, đất đai trên lãnh thổ Việt nam có thể thuộc quyền sở hữu của: a) Tư nhân",
+                    "question_text": "Câu 5. Theo Hiến pháp, đất đai trên lãnh thổ Việt nam có thể thuộc quyền sở hữu của: ",
                     "answers_text": [
+                        "Tư nhân",
                         "Doanh nghiệp nhà nước",
                         "Toàn dân",
                         "Các tập đoàn nước ngoài"
                     ],
-                    "correct_index": 1
+                    "correct_index": 2
                 },
                 {
                     "question_text": "Câu 6. Theo Hiến pháp, lựa chọn nào dưới đây là quốc sách hàng đầu:",
