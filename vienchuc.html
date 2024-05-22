@@ -38,6 +38,7 @@
             </label></div>
     </div>
     <button style="margin: 2rem; padding: 2rem;" id="back-button">Back</button>
+    <button style="margin: 2rem; padding: 2rem;" id="shuffle-button">Shuffle</button>
     <button style="margin: 2rem; padding: 2rem;" id="next-button">Next</button>
     <div id="q-content"></div>
     <p id="notify_message"></p>
@@ -1945,6 +1946,14 @@
             showQuestion();
         }
 
+        // Function to handle shuffle button click
+        function shuffleQuestion() {
+
+            currentQuestionIndex = Math.floor(Math.random() * questions[currentQuestionBank].length);
+
+            showQuestion();
+        }
+
         // Function to handle back button click
         function backQuestion() {
 
@@ -1963,6 +1972,7 @@
         // Add event listeners for buttons (replace with your button element selection)
         document.getElementById("next-button").addEventListener("click", nextQuestion);
         document.getElementById("back-button").addEventListener("click", backQuestion);
+        document.getElementById("shuffle-button").addEventListener("click", shuffleQuestion);
         document.getElementById("check-button").addEventListener("click", checkAnswer);
 
     </script>
